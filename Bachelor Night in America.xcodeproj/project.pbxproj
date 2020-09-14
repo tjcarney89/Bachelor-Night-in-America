@@ -3,27 +3,60 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2BD07F6054F86CEBE3509608 /* Pods_Bachelor_Night_in_America.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561AC7E47177A5054A8995C1 /* Pods_Bachelor_Night_in_America.framework */; };
+		F0444F9624AC2C04009BD3C9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */; };
+		F0444F9824B93FA9009BD3C9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9724B93FA9009BD3C9 /* Defaults.swift */; };
+		F0444F9A24B94547009BD3C9 /* PicksStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9924B94547009BD3C9 /* PicksStore.swift */; };
+		F0444F9C24B95194009BD3C9 /* ContestantStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9B24B95193009BD3C9 /* ContestantStatus.swift */; };
+		F0444F9E24C12ADE009BD3C9 /* ContestantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9D24C12ADE009BD3C9 /* ContestantDetailViewController.swift */; };
+		F0444FA024C13624009BD3C9 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9F24C13624009BD3C9 /* PaddingLabel.swift */; };
+		F0444FA224C5193B009BD3C9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444FA124C5193B009BD3C9 /* Constants.swift */; };
+		F059D4A024D10EF700450B1F /* BNIAUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F059D49F24D10EF700450B1F /* BNIAUser.swift */; };
+		F059D4A224D1105B00450B1F /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F059D4A124D1105B00450B1F /* UserTableViewCell.swift */; };
+		F0B13CC824A76DAA008237AC /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B13CC724A76DAA008237AC /* FirebaseClient.swift */; };
+		F0B13CCA24A774C5008237AC /* ContestantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B13CC924A774C5008237AC /* ContestantCollectionViewCell.swift */; };
 		F0EEB60924A2EABA00E0EC46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB60824A2EABA00E0EC46 /* AppDelegate.swift */; };
-		F0EEB60B24A2EABA00E0EC46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB60A24A2EABA00E0EC46 /* SceneDelegate.swift */; };
-		F0EEB60D24A2EABA00E0EC46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB60C24A2EABA00E0EC46 /* ViewController.swift */; };
+		F0EEB60D24A2EABA00E0EC46 /* SurvivorPoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB60C24A2EABA00E0EC46 /* SurvivorPoolViewController.swift */; };
 		F0EEB61024A2EABA00E0EC46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EEB60E24A2EABA00E0EC46 /* Main.storyboard */; };
 		F0EEB61224A2EABD00E0EC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0EEB61124A2EABD00E0EC46 /* Assets.xcassets */; };
 		F0EEB61524A2EABD00E0EC46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EEB61324A2EABD00E0EC46 /* LaunchScreen.storyboard */; };
+		F0EEB61D24A2EB1500E0EC46 /* Contestant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB61C24A2EB1500E0EC46 /* Contestant.swift */; };
+		F0EEB62124A6A82B00E0EC46 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0EEB62024A6A82B00E0EC46 /* GoogleService-Info.plist */; };
+		F0FE099A24C7D43E009EA14E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE099924C7D43E009EA14E /* MainTabBarController.swift */; };
+		F0FE099C24C7D69F009EA14E /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE099B24C7D69F009EA14E /* AdminViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AF2203FB367F5867F5709FD /* Pods-Bachelor Night in America.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bachelor Night in America.debug.xcconfig"; path = "Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America.debug.xcconfig"; sourceTree = "<group>"; };
+		561AC7E47177A5054A8995C1 /* Pods_Bachelor_Night_in_America.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bachelor_Night_in_America.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		892A1A5865D4AC953F317C27 /* Pods-Bachelor Night in America.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bachelor Night in America.release.xcconfig"; path = "Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America.release.xcconfig"; sourceTree = "<group>"; };
+		F0444F9224A8D131009BD3C9 /* Bachelor Night in America.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bachelor Night in America.entitlements"; sourceTree = "<group>"; };
+		F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		F0444F9724B93FA9009BD3C9 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		F0444F9924B94547009BD3C9 /* PicksStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicksStore.swift; sourceTree = "<group>"; };
+		F0444F9B24B95193009BD3C9 /* ContestantStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestantStatus.swift; sourceTree = "<group>"; };
+		F0444F9D24C12ADE009BD3C9 /* ContestantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestantDetailViewController.swift; sourceTree = "<group>"; };
+		F0444F9F24C13624009BD3C9 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		F0444FA124C5193B009BD3C9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F059D49F24D10EF700450B1F /* BNIAUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNIAUser.swift; sourceTree = "<group>"; };
+		F059D4A124D1105B00450B1F /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		F0B13CC724A76DAA008237AC /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		F0B13CC924A774C5008237AC /* ContestantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestantCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0EEB60524A2EABA00E0EC46 /* Bachelor Night in America.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bachelor Night in America.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EEB60824A2EABA00E0EC46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F0EEB60A24A2EABA00E0EC46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F0EEB60C24A2EABA00E0EC46 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F0EEB60C24A2EABA00E0EC46 /* SurvivorPoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivorPoolViewController.swift; sourceTree = "<group>"; };
 		F0EEB60F24A2EABA00E0EC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0EEB61124A2EABD00E0EC46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0EEB61424A2EABD00E0EC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0EEB61624A2EABD00E0EC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0EEB61C24A2EB1500E0EC46 /* Contestant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contestant.swift; sourceTree = "<group>"; };
+		F0EEB62024A6A82B00E0EC46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F0FE099924C7D43E009EA14E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F0FE099B24C7D69F009EA14E /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +64,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BD07F6054F86CEBE3509608 /* Pods_Bachelor_Night_in_America.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65D2CB313BE55AF9DBF12BDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				561AC7E47177A5054A8995C1 /* Pods_Bachelor_Night_in_America.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED5CB0ED03D2514BBC16786F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AF2203FB367F5867F5709FD /* Pods-Bachelor Night in America.debug.xcconfig */,
+				892A1A5865D4AC953F317C27 /* Pods-Bachelor Night in America.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F0EEB5FC24A2EABA00E0EC46 = {
 			isa = PBXGroup;
 			children = (
 				F0EEB60724A2EABA00E0EC46 /* Bachelor Night in America */,
 				F0EEB60624A2EABA00E0EC46 /* Products */,
+				ED5CB0ED03D2514BBC16786F /* Pods */,
+				65D2CB313BE55AF9DBF12BDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +110,69 @@
 			isa = PBXGroup;
 			children = (
 				F0EEB60824A2EABA00E0EC46 /* AppDelegate.swift */,
-				F0EEB60A24A2EABA00E0EC46 /* SceneDelegate.swift */,
-				F0EEB60C24A2EABA00E0EC46 /* ViewController.swift */,
+				F0FE099624C7D18F009EA14E /* Controllers */,
+				F0FE099424C7D136009EA14E /* Models */,
+				F0FE099524C7D176009EA14E /* Views */,
+				F0FE099724C7D1A3009EA14E /* Networking */,
+				F0FE099824C7D1C9009EA14E /* Helpers */,
 				F0EEB60E24A2EABA00E0EC46 /* Main.storyboard */,
 				F0EEB61124A2EABD00E0EC46 /* Assets.xcassets */,
 				F0EEB61324A2EABD00E0EC46 /* LaunchScreen.storyboard */,
 				F0EEB61624A2EABD00E0EC46 /* Info.plist */,
+				F0EEB62024A6A82B00E0EC46 /* GoogleService-Info.plist */,
+				F0444F9224A8D131009BD3C9 /* Bachelor Night in America.entitlements */,
 			);
 			path = "Bachelor Night in America";
+			sourceTree = "<group>";
+		};
+		F0FE099424C7D136009EA14E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0444F9724B93FA9009BD3C9 /* Defaults.swift */,
+				F0444F9924B94547009BD3C9 /* PicksStore.swift */,
+				F0444F9B24B95193009BD3C9 /* ContestantStatus.swift */,
+				F0EEB61C24A2EB1500E0EC46 /* Contestant.swift */,
+				F059D49F24D10EF700450B1F /* BNIAUser.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F0FE099524C7D176009EA14E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F0B13CC924A774C5008237AC /* ContestantCollectionViewCell.swift */,
+				F059D4A124D1105B00450B1F /* UserTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F0FE099624C7D18F009EA14E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F0EEB60C24A2EABA00E0EC46 /* SurvivorPoolViewController.swift */,
+				F0444F9D24C12ADE009BD3C9 /* ContestantDetailViewController.swift */,
+				F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */,
+				F0FE099924C7D43E009EA14E /* MainTabBarController.swift */,
+				F0FE099B24C7D69F009EA14E /* AdminViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F0FE099724C7D1A3009EA14E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F0B13CC724A76DAA008237AC /* FirebaseClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F0FE099824C7D1C9009EA14E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F0444F9F24C13624009BD3C9 /* PaddingLabel.swift */,
+				F0444FA124C5193B009BD3C9 /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +182,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0EEB61924A2EABD00E0EC46 /* Build configuration list for PBXNativeTarget "Bachelor Night in America" */;
 			buildPhases = (
+				29685B1DCC160D86B62DEED2 /* [CP] Check Pods Manifest.lock */,
 				F0EEB60124A2EABA00E0EC46 /* Sources */,
 				F0EEB60224A2EABA00E0EC46 /* Frameworks */,
 				F0EEB60324A2EABA00E0EC46 /* Resources */,
+				48F68F8E6F93360427AF03D7 /* [CP] Embed Pods Frameworks */,
+				44E9C4F3890D64360D508436 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0EEB61524A2EABD00E0EC46 /* LaunchScreen.storyboard in Resources */,
+				F0EEB62124A6A82B00E0EC46 /* GoogleService-Info.plist in Resources */,
 				F0EEB61224A2EABD00E0EC46 /* Assets.xcassets in Resources */,
 				F0EEB61024A2EABA00E0EC46 /* Main.storyboard in Resources */,
 			);
@@ -133,14 +245,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29685B1DCC160D86B62DEED2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bachelor Night in America-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44E9C4F3890D64360D508436 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48F68F8E6F93360427AF03D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0EEB60124A2EABA00E0EC46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0EEB60D24A2EABA00E0EC46 /* ViewController.swift in Sources */,
+				F0444F9C24B95194009BD3C9 /* ContestantStatus.swift in Sources */,
+				F0444F9624AC2C04009BD3C9 /* SignInViewController.swift in Sources */,
+				F0EEB60D24A2EABA00E0EC46 /* SurvivorPoolViewController.swift in Sources */,
+				F059D4A024D10EF700450B1F /* BNIAUser.swift in Sources */,
+				F059D4A224D1105B00450B1F /* UserTableViewCell.swift in Sources */,
+				F0444F9A24B94547009BD3C9 /* PicksStore.swift in Sources */,
+				F0FE099C24C7D69F009EA14E /* AdminViewController.swift in Sources */,
 				F0EEB60924A2EABA00E0EC46 /* AppDelegate.swift in Sources */,
-				F0EEB60B24A2EABA00E0EC46 /* SceneDelegate.swift in Sources */,
+				F0EEB61D24A2EB1500E0EC46 /* Contestant.swift in Sources */,
+				F0444F9E24C12ADE009BD3C9 /* ContestantDetailViewController.swift in Sources */,
+				F0FE099A24C7D43E009EA14E /* MainTabBarController.swift in Sources */,
+				F0444F9824B93FA9009BD3C9 /* Defaults.swift in Sources */,
+				F0B13CC824A76DAA008237AC /* FirebaseClient.swift in Sources */,
+				F0B13CCA24A774C5008237AC /* ContestantCollectionViewCell.swift in Sources */,
+				F0444FA024C13624009BD3C9 /* PaddingLabel.swift in Sources */,
+				F0444FA224C5193B009BD3C9 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +466,10 @@
 		};
 		F0EEB61A24A2EABD00E0EC46 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AF2203FB367F5867F5709FD /* Pods-Bachelor Night in America.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Bachelor Night in America/Bachelor Night in America.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3V4LZU6AD;
 				INFOPLIST_FILE = "Bachelor Night in America/Info.plist";
@@ -300,8 +486,10 @@
 		};
 		F0EEB61B24A2EABD00E0EC46 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 892A1A5865D4AC953F317C27 /* Pods-Bachelor Night in America.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Bachelor Night in America/Bachelor Night in America.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3V4LZU6AD;
 				INFOPLIST_FILE = "Bachelor Night in America/Info.plist";

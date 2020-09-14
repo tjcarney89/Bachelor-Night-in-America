@@ -7,29 +7,72 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKCoreKit
+import FirebaseUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
 
-
+    var window: UIWindow?
+    var authUI: FUIAuth?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        FirebaseApp.configure()
+        authUI = FUIAuth.defaultAuthUI()
+        self.authUI?.delegate = self
+        let providers: [FUIAuthProvider] = [FUIGoogleAuth(), FUIFacebookAuth()]
+        self.authUI?.providers = providers
+        self.authUI?.shouldHideCancelButton = true
+        let authViewController = authUI?.authViewController()
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let survivorVC = storyboard.instantiateViewController(identifier: "survivor") as! SurvivorPoolViewController
+        if Defaults.all().bool(forKey: Defaults.signedInKey) == true {
+            print("USER SIGNED IN")
+//            self.window?.rootViewController = survivorVC
+//            window?.makeKeyAndVisible()
+        } else {
+            print("USER NOT FOUND")
+            self.window?.rootViewController = authViewController
+            window?.makeKeyAndVisible()
+        }
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
+        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+          return true
+        }
+        return false
+//        ApplicationDelegate.shared.application(app, open: url,sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//        )
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        if error != nil {
+            print("ERROR LOGGING IN: \(error.debugDescription)")
+        } else {
+            print("USER LOGGED IN")
+            let user = authDataResult!.user
+            Defaults.add(value: true, for: Defaults.signedInKey)
+            if Defaults.all().string(forKey: Defaults.userIDKey) == nil {
+                FirebaseClient.createUser(user: user)
+                Defaults.add(value: user.uid, for: Defaults.userIDKey)
+            }
+            
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let survivorVC = storyboard.instantiateViewController(identifier: "survivor") as! SurvivorPoolViewController
+            window?.rootViewController = survivorVC
+        }
+    }
+    
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+        return SignInViewController(authUI: authUI)
     }
 
 
