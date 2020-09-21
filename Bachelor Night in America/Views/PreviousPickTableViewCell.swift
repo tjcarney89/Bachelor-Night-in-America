@@ -16,7 +16,8 @@ class PreviousPickTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        previousPickImageView.layer.cornerRadius = 20
+        previousPickImageView.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

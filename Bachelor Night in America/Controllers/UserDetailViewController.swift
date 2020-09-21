@@ -24,28 +24,60 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    var availablePicks: [Contestant] = [] {
+        didSet {
+            self.previousPicksTableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         previousPicksTableView.delegate = self
         previousPicksTableView.dataSource = self
+        currentPickImageView.layer.cornerRadius = 20
+        currentPickImageView.layer.masksToBounds = true
+        currentPickImageView.layer.borderWidth = 3
         if currentPick != nil {
             let placeholder = UIImage(named: "female")
             let ref = FirebaseClient.storage.child("contestants/\(self.currentPick!.imagePath)")
             self.currentPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
             self.currentPickNameLabel.text = self.currentPick!.name
+            self.currentPickImageView.layer.borderColor = AppColors.green?.cgColor
         } else {
             self.currentPickImageView.image = UIImage(named: "logo")
             self.currentPickNameLabel.text = "No Pick Entered"
+            self.currentPickImageView.layer.borderColor = AppColors.red?.cgColor
+
         }
         guard let currentUser = user else {return}
         self.previousPicks = contestants.filter({ (contestant) -> Bool in
             currentUser.picks.contains(contestant.id) && currentUser.currentPick != contestant.id
         })
+        self.availablePicks = contestants.filter({ (contestant) -> Bool in
+            !currentUser.picks.contains(contestant.id) && contestant.status == .onShow
+        })
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Previous Picks"
+        } else {
+            return "Available Picks"
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return previousPicks.count
+        if section == 0 {
+            return previousPicks.count
+        } else {
+            return availablePicks.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,12 +86,23 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "previousPickCell", for: indexPath) as! PreviousPickTableViewCell
-        let currentPreviousPick = previousPicks[indexPath.row]
-        let placeholder = UIImage(named: "female")
-        let ref = FirebaseClient.storage.child("contestants/\(currentPreviousPick.imagePath)")
-        cell.previousPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
-        cell.weekLabel.text = "Week \(indexPath.row + 1) Pick"
-        cell.previousPickNameLabel.text = currentPreviousPick.name + " (\(currentPreviousPick.id))"
+        if indexPath.section == 0 {
+            let currentPreviousPick = previousPicks[indexPath.row]
+            let placeholder = UIImage(named: "female")
+            let ref = FirebaseClient.storage.child("contestants/\(currentPreviousPick.imagePath)")
+            cell.previousPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
+            self.currentPickImageView.layer.borderColor = AppColors.red?.cgColor
+            currentPickImageView.layer.borderWidth = 3
+            cell.weekLabel.text = "Week \(indexPath.row + 1)"
+            cell.previousPickNameLabel.text = currentPreviousPick.name
+        } else {
+            let currentAvailablePick = availablePicks[indexPath.row]
+            let placeholder = UIImage(named: "female")
+            let ref = FirebaseClient.storage.child("contestants/\(currentAvailablePick.imagePath)")
+            cell.previousPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
+            cell.weekLabel.text = "Available"
+            cell.previousPickNameLabel.text = currentAvailablePick.name
+        }
         return cell
     }
     
