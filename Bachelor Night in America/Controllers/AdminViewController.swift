@@ -42,7 +42,7 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
         let currentUser = users[indexPath.row]
-        
+        cell.selectionStyle = .none
         cell.nameLabel.text = currentUser.name
         if currentUser.currentPick != nil {
             var currentPick = ""

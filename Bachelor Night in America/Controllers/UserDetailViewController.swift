@@ -11,8 +11,10 @@ import FirebaseStorage
 
 class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var currentPickImageView: UIImageView!
     @IBOutlet weak var currentPickNameLabel: UILabel!
+    @IBOutlet weak var currentPickLabel: UILabel!
     @IBOutlet weak var previousPicksTableView: UITableView!
     
     var contestants: [Contestant] = []
@@ -35,6 +37,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         previousPicksTableView.delegate = self
         previousPicksTableView.dataSource = self
+        userNameLabel.text = user?.name
         currentPickImageView.layer.cornerRadius = 20
         currentPickImageView.layer.masksToBounds = true
         currentPickImageView.layer.borderWidth = 3
@@ -44,10 +47,12 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             self.currentPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
             self.currentPickNameLabel.text = self.currentPick!.name
             self.currentPickImageView.layer.borderColor = AppColors.green?.cgColor
+            self.currentPickLabel.isHidden = false
         } else {
             self.currentPickImageView.image = UIImage(named: "logo")
             self.currentPickNameLabel.text = "No Pick Entered"
             self.currentPickImageView.layer.borderColor = AppColors.red?.cgColor
+            self.currentPickLabel.isHidden = true
 
         }
         guard let currentUser = user else {return}
@@ -86,13 +91,14 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "previousPickCell", for: indexPath) as! PreviousPickTableViewCell
+        cell.selectionStyle = .none
         if indexPath.section == 0 {
             let currentPreviousPick = previousPicks[indexPath.row]
             let placeholder = UIImage(named: "female")
             let ref = FirebaseClient.storage.child("contestants/\(currentPreviousPick.imagePath)")
             cell.previousPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
-            self.currentPickImageView.layer.borderColor = AppColors.red?.cgColor
-            currentPickImageView.layer.borderWidth = 3
+            cell.previousPickImageView.layer.borderColor = AppColors.red?.cgColor
+            cell.previousPickImageView.layer.borderWidth = 3
             cell.weekLabel.text = "Week \(indexPath.row + 1)"
             cell.previousPickNameLabel.text = currentPreviousPick.name
         } else {
@@ -106,7 +112,10 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

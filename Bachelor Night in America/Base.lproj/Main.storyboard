@@ -24,7 +24,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K18-Zz-ZUh">
-                                <rect key="frame" x="10.5" y="128" width="393" height="734"/>
+                                <rect key="frame" x="10.5" y="148" width="393" height="714"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dhd-88-73z">
                                     <size key="itemSize" width="164" height="154"/>
@@ -177,7 +177,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="K18-Zz-ZUh" secondAttribute="bottom" id="mP6-W6-0Fk"/>
                             <constraint firstItem="c45-ly-vFw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qKN-G9-zZ0"/>
                             <constraint firstItem="c45-ly-vFw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rfL-Kj-bcC"/>
-                            <constraint firstItem="K18-Zz-ZUh" firstAttribute="top" secondItem="c45-ly-vFw" secondAttribute="bottom" constant="4" id="rxi-er-GaT"/>
+                            <constraint firstItem="K18-Zz-ZUh" firstAttribute="top" secondItem="c45-ly-vFw" secondAttribute="bottom" constant="24" id="rxi-er-GaT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CET-7H-SpY"/>
@@ -435,14 +435,14 @@
                                     <constraint firstAttribute="width" secondItem="4Kp-FD-k9Q" secondAttribute="height" id="wdf-vu-ohI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USd-di-P4A">
-                                <rect key="frame" x="172.5" y="260" width="69" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Pick Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USd-di-P4A">
+                                <rect key="frame" x="89" y="244.5" width="236" height="36"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g63-tN-wzA">
-                                <rect key="frame" x="0.0" y="312" width="414" height="496"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g63-tN-wzA">
+                                <rect key="frame" x="0.0" y="306.5" width="414" height="540.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="previousPickCell" rowHeight="117" id="O8z-x7-b4J" customClass="PreviousPickTableViewCell" customModule="Bachelor_Night_in_America" customModuleProvider="target">
@@ -459,14 +459,14 @@
                                                         <constraint firstAttribute="width" constant="80" id="lCL-v6-Dkg"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-zN-y9h">
-                                                    <rect key="frame" x="112" y="18.5" width="53" height="27.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-zN-y9h">
+                                                    <rect key="frame" x="112" y="18.5" width="103" height="28"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XR-gm-zD7">
-                                                    <rect key="frame" x="112" y="47.5" width="40.5" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick Week" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XR-gm-zD7">
+                                                    <rect key="frame" x="112" y="48" width="76" height="22"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -489,26 +489,62 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CO3-AD-EP5">
+                                <rect key="frame" x="8" y="-2" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CO3-AD-EP5" secondAttribute="height" multiplier="1:1" id="726-DY-cPd"/>
+                                    <constraint firstAttribute="width" constant="40" id="A6B-49-V54"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" red="0.732712048" green="0.20804809069999999" blue="0.279140952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="arrow.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="4yV-EA-sne" eventType="touchUpInside" id="Kam-ky-0fm"/>
+                                    <action selector="backButtonTapped:" destination="bPH-f8-PX5" eventType="touchUpInside" id="VYy-Vl-M4e"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMu-7s-YLP">
+                                <rect key="frame" x="140" y="0.0" width="134" height="36"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Pick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbn-YP-n0C">
+                                <rect key="frame" x="162.5" y="276.5" width="89" height="22"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ai8-NR-gVU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g63-tN-wzA" firstAttribute="top" secondItem="USd-di-P4A" secondAttribute="bottom" constant="16" id="4i1-ch-216"/>
                             <constraint firstItem="4Kp-FD-k9Q" firstAttribute="width" secondItem="ns5-lq-GRV" secondAttribute="width" multiplier="0.33" id="5Gv-Tp-jM4"/>
+                            <constraint firstItem="wMu-7s-YLP" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="Fdr-NL-rzq"/>
                             <constraint firstItem="USd-di-P4A" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="Kmx-Yi-7lo"/>
+                            <constraint firstItem="g63-tN-wzA" firstAttribute="bottom" secondItem="ai8-NR-gVU" secondAttribute="bottom" constant="39" id="LLr-ft-7TV"/>
+                            <constraint firstItem="CO3-AD-EP5" firstAttribute="leading" secondItem="ai8-NR-gVU" secondAttribute="leading" constant="8" id="Rm7-rS-S6o"/>
                             <constraint firstItem="4Kp-FD-k9Q" firstAttribute="top" secondItem="ai8-NR-gVU" secondAttribute="top" constant="100" id="T9N-TT-Gvi"/>
+                            <constraint firstItem="Nbn-YP-n0C" firstAttribute="top" secondItem="USd-di-P4A" secondAttribute="bottom" constant="-4" id="Xav-Ti-nxj"/>
                             <constraint firstItem="4Kp-FD-k9Q" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="YZA-qE-QvV"/>
-                            <constraint firstItem="USd-di-P4A" firstAttribute="top" secondItem="4Kp-FD-k9Q" secondAttribute="bottom" constant="23.5" id="b1l-UG-C2z"/>
+                            <constraint firstItem="USd-di-P4A" firstAttribute="top" secondItem="4Kp-FD-k9Q" secondAttribute="bottom" constant="8" id="b1l-UG-C2z"/>
                             <constraint firstItem="g63-tN-wzA" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="dcP-Sf-Akq"/>
+                            <constraint firstItem="wMu-7s-YLP" firstAttribute="top" secondItem="ai8-NR-gVU" secondAttribute="top" id="fU0-Y2-rDr"/>
+                            <constraint firstItem="g63-tN-wzA" firstAttribute="top" secondItem="Nbn-YP-n0C" secondAttribute="bottom" constant="8" id="fZV-Ea-b4B"/>
+                            <constraint firstItem="Nbn-YP-n0C" firstAttribute="centerX" secondItem="USd-di-P4A" secondAttribute="centerX" id="nUm-hx-Zhl"/>
                             <constraint firstItem="g63-tN-wzA" firstAttribute="width" secondItem="ns5-lq-GRV" secondAttribute="width" id="qX6-vu-iGa"/>
-                            <constraint firstItem="ai8-NR-gVU" firstAttribute="bottom" secondItem="g63-tN-wzA" secondAttribute="bottom" id="wxM-eT-MMr"/>
+                            <constraint firstItem="CO3-AD-EP5" firstAttribute="centerY" secondItem="wMu-7s-YLP" secondAttribute="centerY" id="sDk-LM-w2Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wag-uQ-zna"/>
                     <connections>
                         <outlet property="currentPickImageView" destination="4Kp-FD-k9Q" id="X9a-KO-kJu"/>
+                        <outlet property="currentPickLabel" destination="Nbn-YP-n0C" id="nLC-64-JWy"/>
                         <outlet property="currentPickNameLabel" destination="USd-di-P4A" id="58d-KI-jhI"/>
                         <outlet property="previousPicksTableView" destination="g63-tN-wzA" id="yJ0-Ry-5ht"/>
+                        <outlet property="userNameLabel" destination="wMu-7s-YLP" id="trG-pf-FiS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnY-IQ-Z9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
