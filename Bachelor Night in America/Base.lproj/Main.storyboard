@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8d-CP-t7g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8d-CP-t7g">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +25,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K18-Zz-ZUh">
                                 <rect key="frame" x="10.5" y="128" width="393" height="734"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dhd-88-73z">
                                     <size key="itemSize" width="164" height="154"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -50,14 +51,14 @@
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4f-Ck-2RW">
                                                                     <rect key="frame" x="0.0" y="0.0" width="148" height="126"/>
-                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 </view>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zDq-PS-347">
                                                                     <rect key="frame" x="0.0" y="2" width="148" height="121.5"/>
-                                                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="tintColor" systemColor="darkTextColor"/>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="TDS-lD-D8p" secondAttribute="bottom" id="9mw-Oi-dGc"/>
                                                                 <constraint firstItem="TDS-lD-D8p" firstAttribute="top" secondItem="cBV-Up-FL9" secondAttribute="top" id="GPa-d4-911"/>
@@ -120,7 +121,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBa-uQ-QJa">
-                                <rect key="frame" x="364" y="91.5" width="30" height="29"/>
+                                <rect key="frame" x="365" y="91.5" width="29" height="29"/>
                                 <color key="tintColor" red="0.732712048" green="0.20804809069999999" blue="0.279140952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" image="wrench.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
@@ -149,7 +150,7 @@
                                         </constraints>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="L2S-lD-8S0" firstAttribute="centerY" secondItem="AiK-O8-QbR" secondAttribute="centerY" multiplier="0.75" id="Jba-9f-wl7"/>
                                     <constraint firstItem="4qO-X5-NK3" firstAttribute="top" secondItem="L2S-lD-8S0" secondAttribute="bottom" constant="20" id="Sh2-Lh-fO2"/>
@@ -162,7 +163,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="AiK-O8-QbR" secondAttribute="bottom" constant="-40" id="ERQ-RD-MbZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DBa-uQ-QJa" secondAttribute="trailing" constant="20" id="G8m-Dr-TDM"/>
@@ -177,7 +179,6 @@
                             <constraint firstItem="c45-ly-vFw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rfL-Kj-bcC"/>
                             <constraint firstItem="K18-Zz-ZUh" firstAttribute="top" secondItem="c45-ly-vFw" secondAttribute="bottom" constant="4" id="rxi-er-GaT"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="CET-7H-SpY"/>
                     <connections>
@@ -196,17 +197,17 @@
             <objects>
                 <viewController id="TPB-Vg-xJj" customClass="ContestantDetailViewController" customModule="Bachelor_Night_in_America" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wb2-xm-AqK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lVI-V7-G1m">
-                                <rect key="frame" x="0.0" y="88" width="414" height="295.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="278"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-fp-JUE" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                <rect key="frame" x="308.5" y="345" width="97.5" height="30.5"/>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="308.5" y="239.5" width="97.5" height="30.5"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topInset">
@@ -224,50 +225,50 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name, Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6i-M5-s7u">
-                                <rect key="frame" x="16" y="423.5" width="161" height="41"/>
+                                <rect key="frame" x="16" y="318" width="161" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6X4-NZ-aTp">
-                                <rect key="frame" x="16" y="464.5" width="129" height="33"/>
+                                <rect key="frame" x="16" y="359" width="129" height="33"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hometown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTn-jf-zcn">
-                                <rect key="frame" x="16" y="497.5" width="102" height="27.5"/>
+                                <rect key="frame" x="16" y="392" width="102" height="27.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentInsetAdjustmentBehavior="never" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzp-Yt-9pF">
-                                <rect key="frame" x="16" y="533" width="382" height="179.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="16" y="427.5" width="382" height="168.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjw-j0-roP">
-                                <rect key="frame" x="52" y="738" width="310.5" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjw-j0-roP">
+                                <rect key="frame" x="52" y="684" width="310.5" height="60"/>
                                 <color key="backgroundColor" red="0.73271204801421086" green="0.20804809074035591" blue="0.27914095197657213" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="d6R-Ra-ADT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
                                 <state key="normal" title="Button">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <action selector="pickButtonTapped:" destination="TPB-Vg-xJj" eventType="touchUpInside" id="5Vp-qo-sfJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEi-PI-Jxs" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                <rect key="frame" x="326.5" y="310.5" width="79.5" height="30.5"/>
+                                <rect key="frame" x="326.5" y="205" width="79.5" height="30.5"/>
                                 <color key="backgroundColor" red="0.22344327372126005" green="0.67279352950308602" blue="0.41297568594979644" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="topInset">
@@ -285,7 +286,8 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="1HC-bo-z8g"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="p6i-M5-s7u" firstAttribute="leading" secondItem="1HC-bo-z8g" secondAttribute="leading" constant="16" id="18o-jo-sLu"/>
                             <constraint firstItem="1HC-bo-z8g" firstAttribute="trailing" secondItem="uzp-Yt-9pF" secondAttribute="trailing" constant="16" id="6L5-sJ-wUR"/>
@@ -311,7 +313,6 @@
                             <constraint firstItem="lVI-V7-G1m" firstAttribute="bottom" secondItem="Tgt-fp-JUE" secondAttribute="bottom" constant="8" id="xgj-hP-aiu"/>
                             <constraint firstItem="GEi-PI-Jxs" firstAttribute="trailing" secondItem="Tgt-fp-JUE" secondAttribute="trailing" id="yi5-1q-1S3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="1HC-bo-z8g"/>
                     </view>
                     <navigationItem key="navigationItem" id="Xcg-pC-Hct"/>
                     <connections>
@@ -345,7 +346,7 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-Gz-MZK">
                                 <rect key="frame" x="0.0" y="84" width="414" height="817"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="105" id="Ei3-z2-WOU" customClass="UserTableViewCell" customModule="Bachelor_Night_in_America" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="105"/>
@@ -377,6 +378,7 @@
                                         <connections>
                                             <outlet property="currentPickLabel" destination="oy3-c9-mlZ" id="r2c-EI-snz"/>
                                             <outlet property="nameLabel" destination="TlB-Kd-qoK" id="8ig-aF-CIL"/>
+                                            <segue destination="4yV-EA-sne" kind="show" identifier="userDetailSegue" id="8wN-EF-rTO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -397,7 +399,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="n6x-0F-aJs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="centerX" secondItem="n6x-0F-aJs" secondAttribute="centerX" id="61n-j7-feQ"/>
                             <constraint firstItem="FGS-BW-ATC" firstAttribute="leading" secondItem="n6x-0F-aJs" secondAttribute="leading" constant="8" id="BbV-I3-9fo"/>
@@ -408,7 +411,6 @@
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="top" secondItem="4qh-7s-Q4f" secondAttribute="bottom" constant="4" id="fFf-uL-8dh"/>
                             <constraint firstItem="4qh-7s-Q4f" firstAttribute="top" secondItem="n6x-0F-aJs" secondAttribute="top" id="v4K-hD-5ut"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="n6x-0F-aJs"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="wrench.fill" catalog="system" id="nAf-yu-7Sl"/>
                     <connections>
@@ -418,6 +420,100 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5D-oz-cib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2928.985507246377" y="-605.35714285714278"/>
+        </scene>
+        <!--User Detail View Controller-->
+        <scene sceneID="ciA-Qx-nff">
+            <objects>
+                <viewController id="4yV-EA-sne" customClass="UserDetailViewController" customModule="Bachelor_Night_in_America" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ns5-lq-GRV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Kp-FD-k9Q">
+                                <rect key="frame" x="138.5" y="100" width="137" height="136.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Kp-FD-k9Q" secondAttribute="height" id="wdf-vu-ohI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USd-di-P4A">
+                                <rect key="frame" x="172.5" y="260" width="69" height="36"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g63-tN-wzA">
+                                <rect key="frame" x="0.0" y="312" width="414" height="496"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="previousPickCell" id="O8z-x7-b4J" customClass="PreviousPickTableViewCell" customModule="Bachelor_Night_in_America" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O8z-x7-b4J" id="FaH-1O-q9a">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRV-uR-aVV">
+                                                    <rect key="frame" x="16" y="-18.5" width="80" height="80.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xRV-uR-aVV" secondAttribute="height" multiplier="1:1" id="4Op-J9-JqO"/>
+                                                        <constraint firstAttribute="width" constant="80" id="lCL-v6-Dkg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XR-gm-zD7">
+                                                    <rect key="frame" x="112" y="-18.5" width="42" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSZ-zN-y9h">
+                                                    <rect key="frame" x="112" y="41" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8XR-gm-zD7" firstAttribute="top" secondItem="xRV-uR-aVV" secondAttribute="top" id="8nl-Au-jEe"/>
+                                                <constraint firstItem="xRV-uR-aVV" firstAttribute="centerY" secondItem="FaH-1O-q9a" secondAttribute="centerY" id="Ai9-Kq-Rm6"/>
+                                                <constraint firstItem="xRV-uR-aVV" firstAttribute="leading" secondItem="FaH-1O-q9a" secondAttribute="leading" constant="16" id="Mbe-GZ-sY3"/>
+                                                <constraint firstItem="FSZ-zN-y9h" firstAttribute="leading" secondItem="8XR-gm-zD7" secondAttribute="leading" id="ZHB-B5-WuA"/>
+                                                <constraint firstItem="FSZ-zN-y9h" firstAttribute="bottom" secondItem="xRV-uR-aVV" secondAttribute="bottom" id="i4V-rN-NI9"/>
+                                                <constraint firstItem="8XR-gm-zD7" firstAttribute="leading" secondItem="xRV-uR-aVV" secondAttribute="trailing" constant="16" id="ssu-tC-dlz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="previousPickImageView" destination="xRV-uR-aVV" id="dKQ-hw-8h4"/>
+                                            <outlet property="previousPickNameLabel" destination="FSZ-zN-y9h" id="ho7-KC-tZw"/>
+                                            <outlet property="weekLabel" destination="8XR-gm-zD7" id="ULj-mI-Jii"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ai8-NR-gVU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g63-tN-wzA" firstAttribute="top" secondItem="USd-di-P4A" secondAttribute="bottom" constant="16" id="4i1-ch-216"/>
+                            <constraint firstItem="4Kp-FD-k9Q" firstAttribute="width" secondItem="ns5-lq-GRV" secondAttribute="width" multiplier="0.33" id="5Gv-Tp-jM4"/>
+                            <constraint firstItem="USd-di-P4A" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="Kmx-Yi-7lo"/>
+                            <constraint firstItem="4Kp-FD-k9Q" firstAttribute="top" secondItem="ai8-NR-gVU" secondAttribute="top" constant="100" id="T9N-TT-Gvi"/>
+                            <constraint firstItem="4Kp-FD-k9Q" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="YZA-qE-QvV"/>
+                            <constraint firstItem="USd-di-P4A" firstAttribute="top" secondItem="4Kp-FD-k9Q" secondAttribute="bottom" constant="23.5" id="b1l-UG-C2z"/>
+                            <constraint firstItem="g63-tN-wzA" firstAttribute="centerX" secondItem="ai8-NR-gVU" secondAttribute="centerX" id="dcP-Sf-Akq"/>
+                            <constraint firstItem="g63-tN-wzA" firstAttribute="width" secondItem="ns5-lq-GRV" secondAttribute="width" id="qX6-vu-iGa"/>
+                            <constraint firstItem="ai8-NR-gVU" firstAttribute="bottom" secondItem="g63-tN-wzA" secondAttribute="bottom" id="wxM-eT-MMr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Wag-uQ-zna"/>
+                    <connections>
+                        <outlet property="currentPickImageView" destination="4Kp-FD-k9Q" id="X9a-KO-kJu"/>
+                        <outlet property="currentPickNameLabel" destination="USd-di-P4A" id="58d-KI-jhI"/>
+                        <outlet property="previousPicksTableView" destination="g63-tN-wzA" id="yJ0-Ry-5ht"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hnY-IQ-Z9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3747.826086956522" y="-605.35714285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NkU-XU-DHk">
@@ -439,11 +535,40 @@
             <point key="canvasLocation" x="1171.0144927536232" y="-301.33928571428572"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="GEi-PI-Jxs">
+            <size key="intrinsicContentSize" width="79.5" height="30.5"/>
+        </designable>
+        <designable name="Tgt-fp-JUE">
+            <size key="intrinsicContentSize" width="97.5" height="30.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="logo" width="870" height="515"/>
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
-        <image name="wrench.fill" catalog="system" width="128" height="120"/>
+        <image name="wrench.fill" catalog="system" width="128" height="125"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
