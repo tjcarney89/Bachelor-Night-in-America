@@ -40,7 +40,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         guard let currentUser = user else {return}
         self.previousPicks = contestants.filter({ (contestant) -> Bool in
-            currentUser.picks.contains(contestant.id)
+            currentUser.picks.contains(contestant.id) && currentUser.currentPick != contestant.id
         })
     }
     
@@ -54,8 +54,12 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "previousPickCell", for: indexPath) as! PreviousPickTableViewCell
-        cell.previousPickImageView.image = UIImage(named: "female")
+        let currentPreviousPick = previousPicks[indexPath.row]
+        let placeholder = UIImage(named: "female")
+        let ref = FirebaseClient.storage.child("contestants/\(currentPreviousPick.imagePath)")
+        cell.previousPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
         cell.weekLabel.text = "Week \(indexPath.row + 1) Pick"
+        cell.previousPickNameLabel.text = currentPreviousPick.name + " (\(currentPreviousPick.id))"
         return cell
     }
     

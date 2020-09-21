@@ -51,8 +51,9 @@ class FirebaseClient {
                         let isAdmin = userInfo["isAdmin"] as? Bool ?? false
                         var picks: [Int] = []
                         let picksDict = userInfo["picks"] as? [String:Any] ?? [:]
-                        for (key, _) in picksDict.enumerated() {
-                            picks.append(key)
+                        for (key, value) in picksDict.enumerated() {
+                            let pick = Int(value.key) ?? 0
+                            picks.append(pick)
                         }
                         let user = BNIAUser(name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
                         users.append(user)
