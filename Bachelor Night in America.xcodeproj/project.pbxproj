@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2BD07F6054F86CEBE3509608 /* Pods_Bachelor_Night_in_America.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 561AC7E47177A5054A8995C1 /* Pods_Bachelor_Night_in_America.framework */; };
+		F004427E252255AB00CBC5B5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F004427D252255AB00CBC5B5 /* LocalNotificationManager.swift */; };
+		F0044281252255D200CBC5B5 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0044280252255D200CBC5B5 /* LocalNotification.swift */; };
 		F0444F9624AC2C04009BD3C9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */; };
 		F0444F9824B93FA9009BD3C9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9724B93FA9009BD3C9 /* Defaults.swift */; };
 		F0444F9A24B94547009BD3C9 /* PicksStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9924B94547009BD3C9 /* PicksStore.swift */; };
@@ -36,6 +38,8 @@
 		4AF2203FB367F5867F5709FD /* Pods-Bachelor Night in America.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bachelor Night in America.debug.xcconfig"; path = "Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America.debug.xcconfig"; sourceTree = "<group>"; };
 		561AC7E47177A5054A8995C1 /* Pods_Bachelor_Night_in_America.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bachelor_Night_in_America.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		892A1A5865D4AC953F317C27 /* Pods-Bachelor Night in America.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bachelor Night in America.release.xcconfig"; path = "Target Support Files/Pods-Bachelor Night in America/Pods-Bachelor Night in America.release.xcconfig"; sourceTree = "<group>"; };
+		F004427D252255AB00CBC5B5 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		F0044280252255D200CBC5B5 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		F0444F9224A8D131009BD3C9 /* Bachelor Night in America.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bachelor Night in America.entitlements"; sourceTree = "<group>"; };
 		F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F0444F9724B93FA9009BD3C9 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				F0444F9B24B95193009BD3C9 /* ContestantStatus.swift */,
 				F0EEB61C24A2EB1500E0EC46 /* Contestant.swift */,
 				F059D49F24D10EF700450B1F /* BNIAUser.swift */,
+				F0044280252255D200CBC5B5 /* LocalNotification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B13CC724A76DAA008237AC /* FirebaseClient.swift */,
+				F004427D252255AB00CBC5B5 /* LocalNotificationManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -330,6 +336,8 @@
 				F0444F9824B93FA9009BD3C9 /* Defaults.swift in Sources */,
 				F0B13CC824A76DAA008237AC /* FirebaseClient.swift in Sources */,
 				F0B13CCA24A774C5008237AC /* ContestantCollectionViewCell.swift in Sources */,
+				F004427E252255AB00CBC5B5 /* LocalNotificationManager.swift in Sources */,
+				F0044281252255D200CBC5B5 /* LocalNotification.swift in Sources */,
 				F0A76A092518348E006EFB4A /* PreviousPickTableViewCell.swift in Sources */,
 				F0444FA024C13624009BD3C9 /* PaddingLabel.swift in Sources */,
 				F0444FA224C5193B009BD3C9 /* Constants.swift in Sources */,

@@ -37,7 +37,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         self.contestantsCollectionView.delegate = self
         self.contestantsCollectionView.dataSource = self
         
-        
+        self.scheduleNotifications()
         print("PICKS: \(Picks.store.allPicks)")
         FirebaseClient.fetchContestants { (contestants) in
             self.contestants = contestants
@@ -88,6 +88,13 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     @objc func testTimer() {
         Picks.store.removeCurrentPick()
         FirebaseClient.removeCurrentPick()
+    }
+    
+    func scheduleNotifications() {
+        let manager = LocalNotificationManager()
+        let pickNotification = LocalNotification(id: "pick-notification", title: "Don't forget to submit your pick!", datetime: DateComponents(calendar: .current, timeZone: .current, hour: 22, minute: 00))
+        manager.notifications = [pickNotification]
+        manager.schedule()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
