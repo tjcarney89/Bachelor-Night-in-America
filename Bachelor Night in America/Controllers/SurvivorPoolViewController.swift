@@ -48,11 +48,11 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         }
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("didMakePick"), object: nil)
         //FOR CLEARING CURRENT PICK EACH WEEK
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-//        guard let date = formatter.date(from: "2020/07/17 7:30") else { return }
-//        let timer = Timer(fireAt: date, interval: 0, target: self, selector: #selector(testTimer), userInfo: nil, repeats: false)
-//        RunLoop.main.add(timer, forMode: .common)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        guard let date = formatter.date(from: "2020/09/28 22:00") else { return }
+        let timer = Timer(fireAt: date, interval: 86400, target: self, selector: #selector(testTimer), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
         
         
     }
@@ -87,6 +87,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     
     @objc func testTimer() {
         Picks.store.removeCurrentPick()
+        FirebaseClient.removeCurrentPick()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
