@@ -29,6 +29,7 @@ class PreviousPickTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         previousPickImageView.image = nil
+        previousPickImageView.layer.borderWidth = 0
     }
 
 }
