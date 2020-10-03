@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseStorage
+import FirebaseUI
 
 class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -36,7 +37,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
         self.contestantsCollectionView.delegate = self
         self.contestantsCollectionView.dataSource = self
-        
+
         self.scheduleNotifications()
         print("PICKS: \(Picks.store.allPicks)")
         FirebaseClient.fetchContestants { (contestants) in
@@ -47,15 +48,11 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
             
         }
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("didMakePick"), object: nil)
-        //FOR CLEARING CURRENT PICK EACH WEEK
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        guard let date = formatter.date(from: "2020/09/28 22:00") else { return }
-        let timer = Timer(fireAt: date, interval: 86400, target: self, selector: #selector(testTimer), userInfo: nil, repeats: false)
-        RunLoop.main.add(timer, forMode: .common)
         
         
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -85,14 +82,11 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         self.contestantsCollectionView.reloadData()
     }
     
-    @objc func testTimer() {
-        Picks.store.removeCurrentPick()
-        FirebaseClient.removeCurrentPick()
-    }
+   
     
     func scheduleNotifications() {
         let manager = LocalNotificationManager()
-        let pickNotification = LocalNotification(id: "pick-notification", title: "Don't forget to submit your pick!", datetime: DateComponents(calendar: .current, timeZone: .current, hour: 22, minute: 00))
+        let pickNotification = LocalNotification(id: "pick-notification", title: "Survivor Pool", body: "Don't forget to submit your pick!", datetime: DateComponents(calendar: .current, timeZone: .current, hour: 18, minute: 00, weekday: 3))
         manager.notifications = [pickNotification]
         manager.schedule()
     }
