@@ -30,7 +30,8 @@ class FirebaseClient {
                     let statusString = contestantDict["status"] as? String ?? ""
                     let status = ContestantStatus.init(rawValue: statusString)
                     let imagePath = contestantDict["imagePath"] as? String ?? ""
-                    let newContestant = Contestant(id: id, name: name, age: age, hometown: hometown, occupation: occupation, status: status!, imagePath: imagePath)
+                    let bio = contestantDict["bio"] as? String ?? ""
+                    let newContestant = Contestant(id: id, name: name, age: age, hometown: hometown, occupation: occupation, status: status!, bio: bio, imagePath: imagePath)
                     contestants.append(newContestant)
                     print(contestants.count)
                     
