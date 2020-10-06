@@ -18,5 +18,6 @@ struct Contestant {
     let status: ContestantStatus
     let bio: String
     let imagePath: String
+    let funFacts: [String]
     
 }

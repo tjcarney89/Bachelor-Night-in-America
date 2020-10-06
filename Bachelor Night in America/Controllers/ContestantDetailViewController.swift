@@ -16,6 +16,7 @@ class ContestantDetailViewController: UIViewController {
     @IBOutlet weak var occupationLabel: UILabel!
     @IBOutlet weak var hometownLabel: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
+    @IBOutlet weak var funFactsTextView: UITextView!
     @IBOutlet weak var pickButton: UIButton!
     @IBOutlet weak var statusLabel: PaddingLabel!
     @IBOutlet weak var availabilityLabel: PaddingLabel!
@@ -48,7 +49,9 @@ class ContestantDetailViewController: UIViewController {
         self.nameAgeLabel.text = "\(selectedContestant.name), \(selectedContestant.age)"
         self.occupationLabel.text = selectedContestant.occupation
         self.hometownLabel.text = selectedContestant.hometown
+        let bulletedFacts = selectedContestant.funFacts.map { return "🌹 " + $0}
         self.bioTextView.text = selectedContestant.bio
+        self.funFactsTextView.text = bulletedFacts.joined(separator: "\n")
         self.bioTextView.textContainerInset = UIEdgeInsets.zero
         self.bioTextView.textContainer.lineFragmentPadding = 0
         self.setUpIndicatorLabels()
