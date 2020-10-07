@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -324,7 +325,7 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjw-j0-roP">
                                 <rect key="frame" x="52" y="684" width="310.5" height="60"/>
-                                <color key="backgroundColor" red="0.73271204801421086" green="0.20804809074035591" blue="0.27914095197657213" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="Muted Red"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="d6R-Ra-ADT"/>
                                 </constraints>
@@ -621,6 +622,9 @@
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
         <image name="wrench.fill" catalog="system" width="128" height="125"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="Muted Red">
+            <color red="0.83921568627450982" green="0.2627450980392157" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
