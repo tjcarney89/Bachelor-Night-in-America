@@ -35,7 +35,7 @@ class TimerManager {
     }
     
     private func initilizeTimer(date: Date) {
-        let timer = Timer(fireAt: date, interval: 86400, target: self, selector: #selector(resetPicks), userInfo: nil, repeats: true)
+        let timer = Timer(fireAt: date, interval: 604800, target: self, selector: #selector(resetPicks), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .common)
     }
     

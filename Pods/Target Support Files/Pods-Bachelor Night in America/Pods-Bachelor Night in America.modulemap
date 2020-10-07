@@ -1,0 +1,6 @@
+framework module Pods_Bachelor_Night_in_America {
+  umbrella header "Pods-Bachelor Night in America-umbrella.h"
+
+  export *
+  module * { export * }
+}
