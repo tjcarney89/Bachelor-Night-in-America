@@ -29,7 +29,7 @@ class FirebaseClient {
                     let occupation = contestantDict["occupation"] as? String ?? ""
                     let statusString = contestantDict["status"] as? String ?? ""
                     let status = ContestantStatus.init(rawValue: statusString)
-                    let imagePath = contestantDict["imagePath"] as? String ?? ""
+                    let imagePath = contestantDict["image_path"] as? String ?? ""
                     let bio = contestantDict["bio"] as? String ?? ""
                     let funFacts = contestantDict["fun_facts"] as? [String] ?? []
                     let newContestant = Contestant(id: id, name: name, age: age, hometown: hometown, occupation: occupation, status: status!, bio: bio, imagePath: imagePath, funFacts: funFacts)
