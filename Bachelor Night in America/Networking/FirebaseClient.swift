@@ -90,8 +90,8 @@ class FirebaseClient {
     
     class func createUser(user: User) {
         guard let name = user.displayName else {return}
-        ref.child("users").child(user.uid).setValue(["name": name])
-        ref.child("users").child(user.uid).setValue(["isAdmin": false])
+        ref.child("users").child(user.uid).setValue(["name": name, "isAdmin": false])
+        //ref.child("users").child(user.uid).setValue(["isAdmin": false])
     }
     
     class func updatePicks(picks: [Int]) {

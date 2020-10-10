@@ -37,7 +37,8 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
         self.contestantsCollectionView.delegate = self
         self.contestantsCollectionView.dataSource = self
-        //Defaults.removeObject(key: Defaults.signedInKey)
+//        Defaults.removeObject(key: Defaults.signedInKey)
+//        Defaults.all().setValue(nil, forKey: Defaults.userIDKey)
         self.scheduleNotifications()
         print("PICKS: \(Picks.store.allPicks)")
         FirebaseClient.fetchContestants { (contestants) in

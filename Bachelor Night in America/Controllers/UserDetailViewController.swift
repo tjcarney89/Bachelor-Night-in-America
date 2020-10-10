@@ -70,7 +70,11 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Previous Picks"
+            if previousPicks.count == 0 {
+                return nil
+            } else {
+                return "Previous Picks"
+            }
         } else {
             return "Available Picks"
         }

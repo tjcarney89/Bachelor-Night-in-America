@@ -34,4 +34,5 @@ class Defaults {
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
     }
+    
 }
