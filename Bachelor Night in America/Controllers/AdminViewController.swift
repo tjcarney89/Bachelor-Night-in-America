@@ -35,29 +35,48 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.users.count
+        switch section {
+        case 0:
+            return self.users.count
+        case 1:
+            return 1
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
-        let currentUser = users[indexPath.row]
-        cell.selectionStyle = .none
-        cell.nameLabel.text = currentUser.name
-        if currentUser.currentPick != nil {
-            var currentPick = ""
-            for contestant in contestants {
-                if contestant.id == currentUser.currentPick! {
-                    currentPick = contestant.name
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
+            let currentUser = users[indexPath.row]
+            cell.selectionStyle = .none
+            cell.nameLabel.text = currentUser.name
+            if currentUser.currentPick != nil {
+                var currentPick = ""
+                for contestant in contestants {
+                    if contestant.id == currentUser.currentPick! {
+                        currentPick = contestant.name
+                    }
                 }
+                cell.currentPickLabel.text = "Current Pick: \(currentPick)"
+                cell.currentPickLabel.textColor = AppColors.green
+            } else {
+                cell.currentPickLabel.text = "Pick Not Entered"
+                cell.currentPickLabel.textColor = AppColors.red
             }
-            cell.currentPickLabel.text = "Current Pick: \(currentPick)"
-            cell.currentPickLabel.textColor = AppColors.green
+            return cell
         } else {
-            cell.currentPickLabel.text = "Pick Not Entered"
-            cell.currentPickLabel.textColor = AppColors.red
+            let cell = tableView.dequeueReusableCell(withIdentifier: "resetPicksCell", for: indexPath) as! ResetPicksTableViewCell
+            cell.selectionStyle = .none
+            cell.users = self.users
+            cell.callerVC = self
+            return cell
         }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

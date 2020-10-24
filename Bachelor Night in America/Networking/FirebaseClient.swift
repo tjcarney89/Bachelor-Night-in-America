@@ -54,7 +54,7 @@ class FirebaseClient {
                     let pick = Int(value.key) ?? 0
                     picks.append(pick)
                 }
-                let user = BNIAUser(name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                let user = BNIAUser(id: id, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
                 completion(user)
             }
         }
@@ -66,6 +66,7 @@ class FirebaseClient {
             if let data = snapshot.value as? [String:Any] {
                 for userDict in data {
                     if let userInfo = userDict.value as? [String:Any] {
+                        let id = userDict.key
                         let name = userInfo["name"] as? String ?? ""
                         let currentPick = userInfo["currentPick"] as? Int ?? nil
                         let isAdmin = userInfo["isAdmin"] as? Bool ?? false
@@ -75,7 +76,7 @@ class FirebaseClient {
                             let pick = Int(value.key) ?? 0
                             picks.append(pick)
                         }
-                        let user = BNIAUser(name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                        let user = BNIAUser(id: id, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
                         users.append(user)
                     }
                 }
@@ -95,7 +96,7 @@ class FirebaseClient {
                 for (key, _) in picksDict.enumerated() {
                     picks.append(key)
                 }
-                let user = BNIAUser(name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                let user = BNIAUser(id: self.user!.uid, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
                 Defaults.add(value: user.isAdmin, for: Defaults.isAdminKey)
                 completion()
             }
@@ -131,6 +132,12 @@ class FirebaseClient {
     class func removePick(pick: Int) {
         let selectedPick = String(pick)
         ref.child("users").child(self.user!.uid).child("picks").child(selectedPick).removeValue()
+    }
+    
+    class func resetAllPicks(users: [BNIAUser]) {
+        for user in users {
+            ref.child("users").child(user.id).child("currentPick").setValue(nil)
+        }
     }
     
     

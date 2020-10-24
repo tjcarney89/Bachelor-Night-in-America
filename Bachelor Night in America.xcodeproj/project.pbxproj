@@ -11,6 +11,7 @@
 		F004427E252255AB00CBC5B5 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F004427D252255AB00CBC5B5 /* LocalNotificationManager.swift */; };
 		F0044281252255D200CBC5B5 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0044280252255D200CBC5B5 /* LocalNotification.swift */; };
 		F00442A3252823F300CBC5B5 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00442A2252823F300CBC5B5 /* TimerManager.swift */; };
+		F03A79FE2544754D00293697 /* ResetPicksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A79FD2544754D00293697 /* ResetPicksTableViewCell.swift */; };
 		F0444F9624AC2C04009BD3C9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */; };
 		F0444F9824B93FA9009BD3C9 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9724B93FA9009BD3C9 /* Defaults.swift */; };
 		F0444F9A24B94547009BD3C9 /* PicksStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0444F9924B94547009BD3C9 /* PicksStore.swift */; };
@@ -42,6 +43,7 @@
 		F004427D252255AB00CBC5B5 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		F0044280252255D200CBC5B5 /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		F00442A2252823F300CBC5B5 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		F03A79FD2544754D00293697 /* ResetPicksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPicksTableViewCell.swift; sourceTree = "<group>"; };
 		F0444F9224A8D131009BD3C9 /* Bachelor Night in America.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Bachelor Night in America.entitlements"; sourceTree = "<group>"; };
 		F0444F9524AC2C04009BD3C9 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		F0444F9724B93FA9009BD3C9 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				F0B13CC924A774C5008237AC /* ContestantCollectionViewCell.swift */,
 				F059D4A124D1105B00450B1F /* UserTableViewCell.swift */,
 				F0A76A082518348E006EFB4A /* PreviousPickTableViewCell.swift */,
+				F03A79FD2544754D00293697 /* ResetPicksTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				F0444F9C24B95194009BD3C9 /* ContestantStatus.swift in Sources */,
 				F0444F9624AC2C04009BD3C9 /* SignInViewController.swift in Sources */,
 				F0EEB60D24A2EABA00E0EC46 /* SurvivorPoolViewController.swift in Sources */,
+				F03A79FE2544754D00293697 /* ResetPicksTableViewCell.swift in Sources */,
 				F059D4A024D10EF700450B1F /* BNIAUser.swift in Sources */,
 				F059D4A224D1105B00450B1F /* UserTableViewCell.swift in Sources */,
 				F0444F9A24B94547009BD3C9 /* PicksStore.swift in Sources */,
