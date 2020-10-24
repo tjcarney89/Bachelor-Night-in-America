@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
 
     var window: UIWindow?
     var authUI: FUIAuth?
+    var currentUser: BNIAUser?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)

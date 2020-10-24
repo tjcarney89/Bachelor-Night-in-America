@@ -10,37 +10,52 @@ import Foundation
 import FirebaseAuth
 
 class Picks {
+    //TODO: Make CurrentUser accessible through entire app
+    
     static let store = Picks()
     
     var allPicks: [Int] = []
+    var currentPick: Int? = nil
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     private init() {
         self.allPicks = self.retrieveAll()
+        self.currentPick = self.setCurrentPick()
     }
     
     public func retrieveAll() -> [Int] {
-        if let allPicks = Defaults.all().array(forKey: Defaults.picksKey) as? [Int] {
+        if let allPicks = appDelegate.currentUser?.picks {
             return allPicks
         } else {
             return []
         }
     }
     
+    public func setCurrentPick() -> Int? {
+        if let currentPick = appDelegate.currentUser?.currentPick {
+            return currentPick
+        } else {
+            return nil
+        }
+    }
+    
     func removeAll() {
         self.allPicks.removeAll()
-        Defaults.add(value: allPicks, for: Defaults.picksKey)
+        //Defaults.add(value: allPicks, for: Defaults.picksKey)
         FirebaseClient.updatePicks(picks: allPicks)
     }
     
     func removeCurrentPick() {
-        Defaults.removeObject(key: Defaults.currentPickKey)
+        //Defaults.removeObject(key: Defaults.currentPickKey)
+        self.currentPick = nil
         FirebaseClient.removeCurrentPick()
     }
     
     func addPick(id: Int) {
         self.allPicks.append(id)
-        Defaults.add(value: allPicks, for: Defaults.picksKey)
-        Defaults.add(value: id, for: Defaults.currentPickKey)
+        self.currentPick = id
+        //Defaults.add(value: allPicks, for: Defaults.picksKey)
+        //Defaults.add(value: id, for: Defaults.currentPickKey)
         FirebaseClient.updatePicks(picks: self.allPicks)
         FirebaseClient.updateCurrentPick(currentPick: id)
     }
@@ -52,7 +67,7 @@ class Picks {
                 FirebaseClient.removePick(pick: id)
             }
         }
-        Defaults.add(value: allPicks, for: Defaults.picksKey)
+        //Defaults.add(value: allPicks, for: Defaults.picksKey)
         
     }
     

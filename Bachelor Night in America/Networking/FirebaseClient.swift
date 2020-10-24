@@ -42,6 +42,24 @@ class FirebaseClient {
         }
     }
     
+    class func fetchUser(id: String, completion: @escaping (BNIAUser) -> ()) {
+        ref.child("users").child(id).observeSingleEvent(of: .value) { (snapshot) in
+            if let data = snapshot.value as? [String:Any] {
+                let name = data["name"] as? String ?? ""
+                let currentPick = data["currentPick"] as? Int ?? nil
+                let isAdmin = data["isAdmin"] as? Bool ?? false
+                var picks: [Int] = []
+                let picksDict = data["picks"] as? [String:Any] ?? [:]
+                for (_, value) in picksDict.enumerated() {
+                    let pick = Int(value.key) ?? 0
+                    picks.append(pick)
+                }
+                let user = BNIAUser(name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                completion(user)
+            }
+        }
+    }
+    
     class func fetchUsers(completion: @escaping ([BNIAUser]) -> ()) {
         var users: [BNIAUser] = []
         ref.child("users").observeSingleEvent(of: .value) { (snapshot) in
@@ -53,7 +71,7 @@ class FirebaseClient {
                         let isAdmin = userInfo["isAdmin"] as? Bool ?? false
                         var picks: [Int] = []
                         let picksDict = userInfo["picks"] as? [String:Any] ?? [:]
-                        for (key, value) in picksDict.enumerated() {
+                        for (_, value) in picksDict.enumerated() {
                             let pick = Int(value.key) ?? 0
                             picks.append(pick)
                         }

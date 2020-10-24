@@ -19,9 +19,10 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet weak var contestantsCollectionView: UICollectionView!
     @IBOutlet weak var adminButton: UIButton!
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var contestants: [Contestant] = []
     var handle: AuthStateDidChangeListenerHandle?
-    var currentUser: User?
+    var currentUser: BNIAUser?
     var loadCount = 0 {
         didSet {
             if loadCount == contestants.count {
@@ -40,7 +41,6 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
 //        Defaults.removeObject(key: Defaults.signedInKey)
 //        Defaults.all().setValue(nil, forKey: Defaults.userIDKey)
         self.scheduleNotifications()
-        print("PICKS: \(Picks.store.allPicks)")
         FirebaseClient.fetchContestants { (contestants) in
             self.contestants = contestants
             DispatchQueue.main.async {
@@ -60,7 +60,14 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         self.navigationController?.navigationBar.isHidden = true
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if let user = user {
-                self.currentUser = user
+                FirebaseClient.fetchUser(id: user.uid) { (user) in
+                    self.appDelegate.currentUser = user
+                    //self.currentUser = user
+                    DispatchQueue.main.async {
+                        self.contestantsCollectionView.reloadData()
+                    }
+                }
+                
                 FirebaseClient.setIsAdmin {
                     if Defaults.all().bool(forKey: Defaults.isAdminKey) == true {
                         self.adminButton.isHidden = false
@@ -98,6 +105,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "contestantCell", for: indexPath) as! ContestantCollectionViewCell
+        //guard let currentUser = self.currentUser else {return cell}
         let currentContestant = self.contestants[indexPath.row]
         let hasBeenPicked = Picks.store.allPicks.contains(currentContestant.id)
         let placeholder = UIImage(named: "female")
@@ -126,7 +134,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
             cell.xImageView.isHidden = false
         }
         
-        if let currentPick = Defaults.all().value(forKey: Defaults.currentPickKey) as? Int {
+        if let currentPick = Picks.store.currentPick {
             if currentContestant.id ==  currentPick {
                 cell.cardView.layer.borderColor = AppColors.green?.cgColor
                 cell.cardView.layer.borderWidth = 3
@@ -159,6 +167,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         if segue.identifier == "detailSegue" {
             if let detailVC = segue.destination as? ContestantDetailViewController {
                 detailVC.selectedContestant = self.contestants[(self.contestantsCollectionView.indexPathsForSelectedItems?.first!.row)!]
+                
             }
         }
     }

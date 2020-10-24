@@ -22,15 +22,18 @@ class ContestantDetailViewController: UIViewController {
     @IBOutlet weak var availabilityLabel: PaddingLabel!
     
     var selectedContestant: Contestant!
+    //var currentUser: BNIAUser!
     var hasBeenPicked: Bool {
         Picks.store.allPicks.contains(selectedContestant.id)
     }
     
     var pickSubmitted: Bool {
-        (Defaults.all().value(forKey: Defaults.currentPickKey) != nil)
+        (Picks.store.currentPick != nil)
     }
     
-    let currentPick: Int? = Defaults.all().value(forKey: Defaults.currentPickKey) as? Int
+    var currentPick: Int? {
+        Picks.store.currentPick
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,9 +125,10 @@ class ContestantDetailViewController: UIViewController {
     
     @IBAction func pickButtonTapped(_ sender: Any) {
         if pickSubmitted {
+            let previousPick = self.currentPick
             Picks.store.removePick(id: currentPick!)
             Picks.store.removeCurrentPick()
-            if currentPick != selectedContestant.id {
+            if previousPick != selectedContestant.id {
                 Picks.store.addPick(id: selectedContestant.id)
                 self.pickButton.isEnabled = false
                 self.pickButton.backgroundColor = .darkGray
