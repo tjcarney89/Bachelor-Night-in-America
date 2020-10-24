@@ -21,7 +21,11 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.userTableView.dataSource = self
         self.userTableView.tableFooterView = UIView()
         FirebaseClient.fetchUsers { (users) in
-            self.users = users
+            self.users = users.sorted(by: { (user1, user2) -> Bool in
+                user1.name < user2.name
+            }).sorted(by: { (user1, user2) -> Bool in
+                user1.currentPick != nil
+            })
             DispatchQueue.main.async {
                 self.userTableView.reloadData()
             }
@@ -75,6 +79,7 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.selectionStyle = .none
             cell.users = self.users
             cell.callerVC = self
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 10000, bottom: 0, right: 0)
             return cell
         }
     }
