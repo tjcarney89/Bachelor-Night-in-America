@@ -85,7 +85,14 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        switch indexPath.section {
+        case 0:
+            return 100
+        case 1:
+            return 150
+        default:
+            return 100
+        }
     }
     
 

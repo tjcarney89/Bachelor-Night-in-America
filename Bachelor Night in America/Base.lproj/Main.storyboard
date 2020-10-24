@@ -427,7 +427,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eF8-tb-HzO">
-                                                    <rect key="frame" x="52" y="40.5" width="310.5" height="43"/>
+                                                    <rect key="frame" x="52" y="31" width="310.5" height="62"/>
                                                     <color key="backgroundColor" red="0.732712048" green="0.20804809069999999" blue="0.279140952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
                                                     <state key="normal" title="Reset All Picks">
@@ -440,6 +440,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eF8-tb-HzO" firstAttribute="width" secondItem="DhC-Ke-UdY" secondAttribute="width" multiplier="0.75" id="TP6-bE-iqX"/>
+                                                <constraint firstItem="eF8-tb-HzO" firstAttribute="height" secondItem="DhC-Ke-UdY" secondAttribute="height" multiplier="0.5" id="oNC-se-eLe"/>
                                                 <constraint firstItem="eF8-tb-HzO" firstAttribute="centerY" secondItem="DhC-Ke-UdY" secondAttribute="centerY" id="qaO-WM-kBD"/>
                                                 <constraint firstItem="eF8-tb-HzO" firstAttribute="centerX" secondItem="DhC-Ke-UdY" secondAttribute="centerX" id="z34-5Z-a9a"/>
                                             </constraints>
