@@ -58,31 +58,30 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
-            if let user = user {
-                FirebaseClient.fetchUser(id: user.uid) { (user) in
-                    self.appDelegate.currentUser = user
-                    //self.currentUser = user
-                    DispatchQueue.main.async {
-                        self.contestantsCollectionView.reloadData()
-                    }
+        if let userID = Defaults.all().string(forKey: Defaults.userIDKey) {
+            FirebaseClient.fetchUser(id: userID) { (user) in
+                self.appDelegate.currentUser = user
+                //self.currentUser = user
+                DispatchQueue.main.async {
+                    self.contestantsCollectionView.reloadData()
                 }
                 
-                FirebaseClient.setIsAdmin {
+                FirebaseClient.setIsAdmin(userID: userID, completion: {
                     if Defaults.all().bool(forKey: Defaults.isAdminKey) == true {
                         self.adminButton.isHidden = false
                     } else {
                         self.adminButton.isHidden = true
                     }
-                }
+                })
             }
-        })
+            
+        }
+        
         self.loadingSpinner.startAnimating()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(handle!)
 
     }
     

@@ -15,7 +15,8 @@ class FirebaseClient {
     
     static var ref = Database.database().reference()
     static var storage = Storage.storage().reference(forURL: "gs://bachelor-night-in-america.appspot.com")
-    static let user = Auth.auth().currentUser
+    static let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     
     class func fetchContestants(completion: @escaping ([Contestant]) -> ()) {
         var contestants: [Contestant] = []
@@ -85,8 +86,8 @@ class FirebaseClient {
         }
     }
     
-    class func setIsAdmin(completion: @escaping () -> ()) {
-        ref.child("users").child(user!.uid).observeSingleEvent(of: .value) { (snapshot) in
+    class func setIsAdmin(userID: String, completion: @escaping () -> ()) {
+        ref.child("users").child(userID).observeSingleEvent(of: .value) { (snapshot) in
             if let data = snapshot.value as? [String:Any] {
                 let name = data["name"] as? String ?? ""
                 let currentPick = data["currentPick"] as? Int ?? nil
@@ -96,7 +97,7 @@ class FirebaseClient {
                 for (key, _) in picksDict.enumerated() {
                     picks.append(key)
                 }
-                let user = BNIAUser(id: self.user!.uid, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                let user = BNIAUser(id: userID, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
                 Defaults.add(value: user.isAdmin, for: Defaults.isAdminKey)
                 completion()
             }
@@ -116,22 +117,22 @@ class FirebaseClient {
     class func updatePicks(picks: [Int]) {
         for pick in picks {
             let selectedPick = String(pick)
-            ref.child("users").child(self.user!.uid).child("picks").child(selectedPick).setValue(true)
+            ref.child("users").child(self.appDelegate.currentUser!.id).child("picks").child(selectedPick).setValue(true)
             
         }
     }
     
     class func updateCurrentPick(currentPick: Int) {
-        ref.child("users").child(self.user!.uid).child("currentPick").setValue(currentPick)
+        ref.child("users").child(self.appDelegate.currentUser!.id).child("currentPick").setValue(currentPick)
     }
     
     class func removeCurrentPick() {
-        ref.child("users").child(self.user!.uid).child("currentPick").setValue(nil)
+        ref.child("users").child(self.appDelegate.currentUser!.id).child("currentPick").setValue(nil)
     }
     
     class func removePick(pick: Int) {
         let selectedPick = String(pick)
-        ref.child("users").child(self.user!.uid).child("picks").child(selectedPick).removeValue()
+        ref.child("users").child(self.appDelegate.currentUser!.id).child("picks").child(selectedPick).removeValue()
     }
     
     class func resetAllPicks(users: [BNIAUser]) {
