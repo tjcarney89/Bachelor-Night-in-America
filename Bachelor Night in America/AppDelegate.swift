@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
             print("USER LOGGED IN")
             let user = authDataResult!.user
             Defaults.add(value: true, for: Defaults.signedInKey)
-            TimerManager().setUpTimer()
+            //TimerManager().setUpTimer()
             if Defaults.all().string(forKey: Defaults.userIDKey) == nil {
                 FirebaseClient.createUser(user: user)
                 Defaults.add(value: user.uid, for: Defaults.userIDKey)
