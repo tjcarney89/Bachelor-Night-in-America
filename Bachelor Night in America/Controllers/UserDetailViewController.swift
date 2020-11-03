@@ -103,7 +103,8 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.previousPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
             cell.previousPickImageView.layer.borderColor = AppColors.red?.cgColor
             cell.previousPickImageView.layer.borderWidth = 3
-            cell.weekLabel.text = "Week \(indexPath.row + 1)"
+            //cell.weekLabel.text = "Week \(indexPath.row + 1)"
+            cell.weekLabel.isHidden = true
             cell.previousPickNameLabel.text = currentPreviousPick.name
         } else {
             let currentAvailablePick = availablePicks[indexPath.row]

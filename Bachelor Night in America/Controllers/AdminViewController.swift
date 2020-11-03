@@ -21,11 +21,10 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.userTableView.dataSource = self
         self.userTableView.tableFooterView = UIView()
         FirebaseClient.fetchUsers { (users) in
-            self.users = users.sorted(by: { (user1, user2) -> Bool in
-                user1.name < user2.name
-            }).sorted(by: { (user1, user2) -> Bool in
-                user1.currentPick != nil
-            })
+            let picksIn = users.filter {$0.currentPick != nil}.sorted {$0.name < $1.name}
+            let picksNotIn = users.filter {$0.currentPick == nil}.sorted {$0.name < $1.name}
+            self.users = picksIn + picksNotIn
+
             DispatchQueue.main.async {
                 self.userTableView.reloadData()
             }
