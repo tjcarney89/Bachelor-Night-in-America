@@ -114,7 +114,12 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         }
         cell.nameLabel.text = currentContestant.name
         cell.overlayView.alpha = 0
-        if currentContestant.status == .onShow && !hasBeenPicked {
+        if currentContestant.status == .winner {
+            cell.cardView.layer.borderColor = AppColors.yellow?.cgColor
+            cell.cardView.layer.borderWidth = 3
+            cell.nameLabel.textColor = AppColors.yellow
+            cell.xImageView.isHidden = true
+        } else if currentContestant.status == .onShow && !hasBeenPicked {
             cell.nameLabel.textColor = .label
             cell.xImageView.isHidden = true
         } else if currentContestant.status == .onShow && hasBeenPicked {

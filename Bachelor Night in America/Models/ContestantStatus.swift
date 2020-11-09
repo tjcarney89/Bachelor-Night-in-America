@@ -11,4 +11,5 @@ import Foundation
 enum ContestantStatus: String {
     case onShow = "On Show"
     case offShow = "Off Show"
+    case winner = "Winner"
 }

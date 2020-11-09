@@ -70,8 +70,13 @@ class ContestantDetailViewController: UIViewController {
         self.statusLabel.layer.masksToBounds = true
         self.availabilityLabel.layer.cornerRadius = 10
         self.availabilityLabel.layer.masksToBounds = true
-
-        if selectedContestant.status == .onShow && !hasBeenPicked {
+        
+        if selectedContestant.status == .winner {
+            self.statusLabel.backgroundColor = AppColors.yellow
+            self.statusLabel.text = "Winner"
+            self.availabilityLabel.backgroundColor = AppColors.red
+            self.availabilityLabel.text = "Unavailable"
+        } else if selectedContestant.status == .onShow && !hasBeenPicked {
             self.statusLabel.backgroundColor = AppColors.green
             self.statusLabel.text = "On Show"
             self.availabilityLabel.backgroundColor = AppColors.green
@@ -108,7 +113,9 @@ class ContestantDetailViewController: UIViewController {
             self.pickButton.setTitle("You Have Been Eliminated", for: .disabled)
             self.pickButton.backgroundColor = .darkGray
             self.pickButton.isEnabled = false
-        } else {
+        } else if selectedContestant.status == .winner {
+            self.pickButton.isHidden = true
+        }  else {
             if pickSubmitted {
                 if currentPick == selectedContestant.id {
                     self.pickButton.setTitle("Remove Pick", for: .normal)

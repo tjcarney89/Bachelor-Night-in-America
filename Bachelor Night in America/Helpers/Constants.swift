@@ -12,5 +12,6 @@ import UIKit
 struct AppColors {
     static let green = UIColor(named: "Muted Green")
     static let red = UIColor(named: "Muted Red")
+    static let yellow = UIColor(named: "Muted Yellow")
 }
 
