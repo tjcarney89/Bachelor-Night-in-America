@@ -141,6 +141,10 @@ class FirebaseClient {
         }
     }
     
+    class func updateSurvivorStatus(user: BNIAUser, status: String) {
+        ref.child("users").child(user.id).child("status").setValue(status)
+    }
+    
     
     class func addContestantImages(contestants: [Contestant]) {
         for contestant in contestants {

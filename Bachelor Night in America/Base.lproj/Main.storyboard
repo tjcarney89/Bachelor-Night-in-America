@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8d-CP-t7g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8d-CP-t7g">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -209,7 +209,7 @@
                                         <rect key="frame" x="0.0" y="8" width="414" height="279.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEi-PI-Jxs" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                        <rect key="frame" x="342.5" y="216" width="63.5" height="20.5"/>
+                                        <rect key="frame" x="326.5" y="206" width="79.5" height="30.5"/>
                                         <color key="backgroundColor" red="0.22344327372126005" green="0.67279352950308602" blue="0.41297568594979644" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,7 +230,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-fp-JUE" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                        <rect key="frame" x="324.5" y="243.5" width="81.5" height="20.5"/>
+                                        <rect key="frame" x="308.5" y="243.5" width="97.5" height="30.5"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -419,36 +419,6 @@
                                             <segue destination="4yV-EA-sne" kind="show" identifier="userDetailSegue" id="8wN-EF-rTO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="resetPicksCell" rowHeight="124" id="FDn-P0-1o9" customClass="ResetPicksTableViewCell" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="133" width="414" height="124"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FDn-P0-1o9" id="DhC-Ke-UdY">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eF8-tb-HzO">
-                                                    <rect key="frame" x="52" y="31" width="310.5" height="62"/>
-                                                    <color key="backgroundColor" red="0.732712048" green="0.20804809069999999" blue="0.279140952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
-                                                    <state key="normal" title="Reset All Picks">
-                                                        <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="resetPicksButtonTapped:" destination="FDn-P0-1o9" eventType="touchUpInside" id="wmU-mA-7kb"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="eF8-tb-HzO" firstAttribute="width" secondItem="DhC-Ke-UdY" secondAttribute="width" multiplier="0.75" id="TP6-bE-iqX"/>
-                                                <constraint firstItem="eF8-tb-HzO" firstAttribute="height" secondItem="DhC-Ke-UdY" secondAttribute="height" multiplier="0.5" id="oNC-se-eLe"/>
-                                                <constraint firstItem="eF8-tb-HzO" firstAttribute="centerY" secondItem="DhC-Ke-UdY" secondAttribute="centerY" id="qaO-WM-kBD"/>
-                                                <constraint firstItem="eF8-tb-HzO" firstAttribute="centerX" secondItem="DhC-Ke-UdY" secondAttribute="centerX" id="z34-5Z-a9a"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="resetPicksButton" destination="eF8-tb-HzO" id="k4q-AK-xSG"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGS-BW-ATC">
@@ -466,6 +436,20 @@
                                     <action selector="backButtonTapped:" destination="bPH-f8-PX5" eventType="touchUpInside" id="rWi-lI-ACf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kp-nV-yI4">
+                                <rect key="frame" x="366" y="42" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="tIe-Rt-TCd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="tintColor" red="0.732712048" green="0.20804809069999999" blue="0.279140952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="line.horizontal.3" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="menuButtonTapped:" destination="bPH-f8-PX5" eventType="touchUpInside" id="eq8-JZ-kJ6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n6x-0F-aJs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -477,7 +461,10 @@
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="width" secondItem="0o3-PE-yqX" secondAttribute="width" id="VXC-Oa-T9o"/>
                             <constraint firstItem="4qh-7s-Q4f" firstAttribute="centerX" secondItem="n6x-0F-aJs" secondAttribute="centerX" id="WiN-7m-OS5"/>
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="top" secondItem="4qh-7s-Q4f" secondAttribute="bottom" constant="4" id="fFf-uL-8dh"/>
+                            <constraint firstItem="4Kp-nV-yI4" firstAttribute="centerY" secondItem="4qh-7s-Q4f" secondAttribute="centerY" id="kCX-cV-26U"/>
+                            <constraint firstItem="n6x-0F-aJs" firstAttribute="trailing" secondItem="4Kp-nV-yI4" secondAttribute="trailing" constant="8" id="t8F-9b-Z3B"/>
                             <constraint firstItem="4qh-7s-Q4f" firstAttribute="top" secondItem="n6x-0F-aJs" secondAttribute="top" id="v4K-hD-5ut"/>
+                            <constraint firstItem="4Kp-nV-yI4" firstAttribute="width" secondItem="4Kp-nV-yI4" secondAttribute="height" multiplier="1:1" id="yQi-to-qa2"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="wrench.fill" catalog="system" id="nAf-yu-7Sl"/>
@@ -641,14 +628,15 @@
     </scenes>
     <designables>
         <designable name="GEi-PI-Jxs">
-            <size key="intrinsicContentSize" width="63.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="79.5" height="30.5"/>
         </designable>
         <designable name="Tgt-fp-JUE">
-            <size key="intrinsicContentSize" width="81.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="97.5" height="30.5"/>
         </designable>
     </designables>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="logo" width="870" height="515"/>
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
         <image name="wrench.fill" catalog="system" width="128" height="125"/>
@@ -661,9 +649,6 @@
         </systemColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

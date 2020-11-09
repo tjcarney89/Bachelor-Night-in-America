@@ -39,48 +39,33 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return self.users.count
-        case 1:
-            return 1
-        default:
-            return 0
-        }
+        return self.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
-            let currentUser = users[indexPath.row]
-            cell.selectionStyle = .none
-            cell.nameLabel.text = currentUser.name
-            if currentUser.currentPick != nil {
-                var currentPick = ""
-                for contestant in contestants {
-                    if contestant.id == currentUser.currentPick! {
-                        currentPick = contestant.name
-                    }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
+        let currentUser = users[indexPath.row]
+        cell.selectionStyle = .none
+        cell.nameLabel.text = currentUser.name
+        if currentUser.currentPick != nil {
+            var currentPick = ""
+            for contestant in contestants {
+                if contestant.id == currentUser.currentPick! {
+                    currentPick = contestant.name
                 }
-                cell.currentPickLabel.text = "Current Pick: \(currentPick)"
-                cell.currentPickLabel.textColor = AppColors.green
-            } else {
-                cell.currentPickLabel.text = "Pick Not Entered"
-                cell.currentPickLabel.textColor = AppColors.red
             }
-            return cell
+            cell.currentPickLabel.text = "Current Pick: \(currentPick)"
+            cell.currentPickLabel.textColor = AppColors.green
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "resetPicksCell", for: indexPath) as! ResetPicksTableViewCell
-            cell.selectionStyle = .none
-            cell.users = self.users
-            cell.callerVC = self
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 10000, bottom: 0, right: 0)
-            return cell
+            cell.currentPickLabel.text = "Pick Not Entered"
+            cell.currentPickLabel.textColor = AppColors.red
         }
+        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -94,10 +79,57 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    func setSurvivorStatus() {
+        for user in self.users {
+            for contestant in self.contestants {
+                if user.currentPick == contestant.id {
+                    if contestant.status == .offShow {
+                        FirebaseClient.updateSurvivorStatus(user: user, status: "Eliminated")
+                        break
+                    } else {
+                        FirebaseClient.updateSurvivorStatus(user: user, status: "Active")
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
+    func resetPicks() {
+        let alert = UIAlertController(title: "Picks Reset", message: "Are you sure you want to reset the picks for this week?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            FirebaseClient.resetAllPicks(users: self.users)
+        }
+        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Admin", message: nil, preferredStyle: .actionSheet)
+        let resetAction = UIAlertAction(title: "Reset All Picks", style: .destructive) { (action) in
+            self.resetPicks()
+        }
+        let eliminateAction = UIAlertAction(title: "Update Elimination Statuses", style: .default) { (action) in
+            self.setSurvivorStatus()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(resetAction)
+        actionSheet.addAction(eliminateAction)
+        actionSheet.addAction(cancelAction)
+        self.present(actionSheet, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "userDetailSegue" {
             if let detailVC = segue.destination as? UserDetailViewController {
