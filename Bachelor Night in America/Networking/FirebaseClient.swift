@@ -49,13 +49,15 @@ class FirebaseClient {
                 let name = data["name"] as? String ?? ""
                 let currentPick = data["currentPick"] as? Int ?? nil
                 let isAdmin = data["isAdmin"] as? Bool ?? false
+                let statusString = data["status"] as? String ?? "Active"
+                let status = SurvivorStatus(rawValue: statusString)
                 var picks: [Int] = []
                 let picksDict = data["picks"] as? [String:Any] ?? [:]
                 for (_, value) in picksDict.enumerated() {
                     let pick = Int(value.key) ?? 0
                     picks.append(pick)
                 }
-                let user = BNIAUser(id: id, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                let user = BNIAUser(id: id, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin, status: status!)
                 completion(user)
             }
         }
@@ -71,13 +73,15 @@ class FirebaseClient {
                         let name = userInfo["name"] as? String ?? ""
                         let currentPick = userInfo["currentPick"] as? Int ?? nil
                         let isAdmin = userInfo["isAdmin"] as? Bool ?? false
+                        let statusString = userInfo["status"] as? String ?? "Active"
+                        let status = SurvivorStatus(rawValue: statusString)
                         var picks: [Int] = []
                         let picksDict = userInfo["picks"] as? [String:Any] ?? [:]
                         for (_, value) in picksDict.enumerated() {
                             let pick = Int(value.key) ?? 0
                             picks.append(pick)
                         }
-                        let user = BNIAUser(id: id, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                        let user = BNIAUser(id: id, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin, status: status!)
                         users.append(user)
                     }
                 }
@@ -92,12 +96,14 @@ class FirebaseClient {
                 let name = data["name"] as? String ?? ""
                 let currentPick = data["currentPick"] as? Int ?? nil
                 let isAdmin = data["isAdmin"] as? Bool ?? false
+                let statusString = data["status"] as? String ?? "Active"
+                let status = SurvivorStatus(rawValue: statusString)
                 var picks: [Int] = []
                 let picksDict = data["picks"] as? [String:Any] ?? [:]
                 for (key, _) in picksDict.enumerated() {
                     picks.append(key)
                 }
-                let user = BNIAUser(id: userID, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin)
+                let user = BNIAUser(id: userID, name: name, currentPick: currentPick, picks: picks, isAdmin: isAdmin, status: status!)
                 Defaults.add(value: user.isAdmin, for: Defaults.isAdminKey)
                 completion()
             }
@@ -110,7 +116,7 @@ class FirebaseClient {
     
     class func createUser(user: User) {
         guard let name = user.displayName else {return}
-        ref.child("users").child(user.uid).setValue(["name": name, "isAdmin": false])
+        ref.child("users").child(user.uid).setValue(["name": name, "isAdmin": false, "status": "Active"])
         //ref.child("users").child(user.uid).setValue(["isAdmin": false])
     }
     
@@ -146,28 +152,4 @@ class FirebaseClient {
     }
     
     
-    class func addContestantImages(contestants: [Contestant]) {
-        for contestant in contestants {
-            let fullName = contestant.name
-            let components = fullName.split(separator: " ")
-            var firstName = components[0]
-            if firstName == "Brianna" {
-                firstName = "Bri"
-            }
-            let lastInitial = components[1].prefix(1)
-            var slug = firstName.lowercased()
-            if firstName == "Alex" || firstName == "Hannah" {
-                slug = slug + "_" + lastInitial.lowercased()
-            }
-            if firstName == "Adrianne" {
-                slug = "jane"
-            }
-            let imagePath = "\(slug).jpg"
-            ref.child("contestants/\(contestant.id)/imagePath").setValue(imagePath)
-
-
-            
-            
-        }
-    }
 }

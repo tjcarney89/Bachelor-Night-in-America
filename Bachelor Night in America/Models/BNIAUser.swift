@@ -14,4 +14,5 @@ struct BNIAUser {
     let currentPick: Int?
     let picks: [Int]
     let isAdmin: Bool
+    let status: SurvivorStatus
 }

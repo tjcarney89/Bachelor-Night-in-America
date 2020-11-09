@@ -51,18 +51,23 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let currentUser = users[indexPath.row]
         cell.selectionStyle = .none
         cell.nameLabel.text = currentUser.name
-        if currentUser.currentPick != nil {
-            var currentPick = ""
-            for contestant in contestants {
-                if contestant.id == currentUser.currentPick! {
-                    currentPick = contestant.name
-                }
-            }
-            cell.currentPickLabel.text = "Current Pick: \(currentPick)"
-            cell.currentPickLabel.textColor = AppColors.green
-        } else {
-            cell.currentPickLabel.text = "Pick Not Entered"
+        if currentUser.status == .eliminated {
+            cell.currentPickLabel.text = "ELIMINATED"
             cell.currentPickLabel.textColor = AppColors.red
+        } else {
+            if currentUser.currentPick != nil {
+                var currentPick = ""
+                for contestant in contestants {
+                    if contestant.id == currentUser.currentPick! {
+                        currentPick = contestant.name
+                    }
+                }
+                cell.currentPickLabel.text = "Current Pick: \(currentPick)"
+                cell.currentPickLabel.textColor = AppColors.green
+            } else {
+                cell.currentPickLabel.text = "Pick Not Entered"
+                cell.currentPickLabel.textColor = AppColors.red
+            }
         }
         return cell
         

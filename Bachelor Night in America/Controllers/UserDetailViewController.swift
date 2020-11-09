@@ -41,19 +41,26 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         currentPickImageView.layer.cornerRadius = 20
         currentPickImageView.layer.masksToBounds = true
         currentPickImageView.layer.borderWidth = 3
-        if currentPick != nil {
-            let placeholder = UIImage(named: "female")
-            let ref = FirebaseClient.storage.child("contestants/\(self.currentPick!.imagePath)")
-            self.currentPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
-            self.currentPickNameLabel.text = self.currentPick!.name
-            self.currentPickImageView.layer.borderColor = AppColors.green?.cgColor
-            self.currentPickLabel.isHidden = false
-        } else {
+        if user?.status == .eliminated {
             self.currentPickImageView.image = UIImage(named: "logo")
-            self.currentPickNameLabel.text = "No Pick Entered"
+            self.currentPickNameLabel.text = "ELIMINATED"
             self.currentPickImageView.layer.borderColor = AppColors.red?.cgColor
             self.currentPickLabel.isHidden = true
-
+        } else {
+            if currentPick != nil {
+                let placeholder = UIImage(named: "female")
+                let ref = FirebaseClient.storage.child("contestants/\(self.currentPick!.imagePath)")
+                self.currentPickImageView.sd_setImage(with: ref, placeholderImage: placeholder)
+                self.currentPickNameLabel.text = self.currentPick!.name
+                self.currentPickImageView.layer.borderColor = AppColors.green?.cgColor
+                self.currentPickLabel.isHidden = false
+            } else {
+                self.currentPickImageView.image = UIImage(named: "logo")
+                self.currentPickNameLabel.text = "No Pick Entered"
+                self.currentPickImageView.layer.borderColor = AppColors.red?.cgColor
+                self.currentPickLabel.isHidden = true
+                
+            }
         }
         guard let currentUser = user else {return}
         self.previousPicks = contestants.filter({ (contestant) -> Bool in

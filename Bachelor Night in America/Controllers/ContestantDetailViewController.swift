@@ -22,7 +22,6 @@ class ContestantDetailViewController: UIViewController {
     @IBOutlet weak var availabilityLabel: PaddingLabel!
     
     var selectedContestant: Contestant!
-    //var currentUser: BNIAUser!
     var hasBeenPicked: Bool {
         Picks.store.allPicks.contains(selectedContestant.id)
     }
@@ -33,6 +32,10 @@ class ContestantDetailViewController: UIViewController {
     
     var currentPick: Int? {
         Picks.store.currentPick
+    }
+    var isEliminated: Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.currentUser?.status == .eliminated
     }
     
     override func viewDidLoad() {
@@ -90,37 +93,50 @@ class ContestantDetailViewController: UIViewController {
             self.availabilityLabel.text = "Unavailable"
         }
         
+        if isEliminated {
+            self.availabilityLabel.backgroundColor = AppColors.red
+            self.availabilityLabel.text = "Unavailable"
+        }
+        
         
     }
     
     func setUpPickButton() {
         self.pickButton.layer.cornerRadius = 15
-        if pickSubmitted {
-            if currentPick == selectedContestant.id {
-                self.pickButton.setTitle("Remove Pick", for: .normal)
+        
+        if isEliminated {
+            self.pickButton.setTitle("You Have Been Eliminated", for: .disabled)
+            self.pickButton.backgroundColor = .darkGray
+            self.pickButton.isEnabled = false
+        } else {
+            if pickSubmitted {
+                if currentPick == selectedContestant.id {
+                    self.pickButton.setTitle("Remove Pick", for: .normal)
+                } else {
+                    self.pickButton.setTitle("Change Pick", for: .normal)
+                }
+                
             } else {
-                self.pickButton.setTitle("Change Pick", for: .normal)
+                self.pickButton.setTitle("Pick", for: .normal)
             }
             
-        } else {
-            self.pickButton.setTitle("Pick", for: .normal)
-        }
-        
-        if Picks.store.allPicks.contains(selectedContestant.id) {
-            if currentPick == selectedContestant.id {
-                self.pickButton.isEnabled = true
-                self.pickButton.isHidden = false
-            } else {
+            if Picks.store.allPicks.contains(selectedContestant.id) {
+                if currentPick == selectedContestant.id {
+                    self.pickButton.isEnabled = true
+                    self.pickButton.isHidden = false
+                } else {
+                    self.pickButton.isEnabled = false
+                    self.pickButton.isHidden = true
+                }
+            } else if selectedContestant.status == .offShow {
                 self.pickButton.isEnabled = false
                 self.pickButton.isHidden = true
+            } else {
+                self.pickButton.isEnabled = true
+                self.pickButton.isHidden = false
             }
-        } else if selectedContestant.status == .offShow {
-            self.pickButton.isEnabled = false
-            self.pickButton.isHidden = true
-        } else {
-            self.pickButton.isEnabled = true
-            self.pickButton.isHidden = false
         }
+        
     }
     
     @IBAction func pickButtonTapped(_ sender: Any) {
