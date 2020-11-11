@@ -30,6 +30,7 @@ class PreviousPickTableViewCell: UITableViewCell {
         super.prepareForReuse()
         previousPickImageView.image = nil
         previousPickImageView.layer.borderWidth = 0
+        weekLabel.isHidden = false
     }
 
 }

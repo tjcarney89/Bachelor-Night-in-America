@@ -25,7 +25,9 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     var currentUser: BNIAUser?
     var loadCount = 0 {
         didSet {
-            if loadCount == contestants.count {
+            print("LOAD COUNT: \(loadCount)")
+            print("NUMBER OF CONTESTANTS: \(contestants.count)")
+            if loadCount == 30 {
                 self.loadingView.isHidden = true
                 self.loadingSpinner.stopAnimating()
             }
@@ -42,9 +44,11 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
 //        Defaults.all().setValue(nil, forKey: Defaults.userIDKey)
         self.scheduleNotifications()
         FirebaseClient.fetchContestants { (contestants) in
-            self.contestants = contestants
+            self.contestants = contestants.sorted {$0.name < $1.name}
             DispatchQueue.main.async {
                 self.contestantsCollectionView.reloadData()
+//                self.loadingView.isHidden = true
+//                self.loadingSpinner.stopAnimating()
             }
             
         }
@@ -105,9 +109,15 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "contestantCell", for: indexPath) as! ContestantCollectionViewCell
         //guard let currentUser = self.currentUser else {return cell}
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! ContestantCollectionViewCell
         let currentContestant = self.contestants[indexPath.row]
         let hasBeenPicked = Picks.store.allPicks.contains(currentContestant.id)
-        let placeholder = UIImage(named: "female")
+        let placeholder = UIImage(named: "logo")
         let ref = FirebaseClient.storage.child("contestants/\(currentContestant.imagePath)")
         cell.imageView.sd_setImage(with: ref, placeholderImage: placeholder) { (image, error, cache, ref) in
             self.loadCount += 1
@@ -147,8 +157,8 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
             }
         }
         
-        return cell
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let spacing = 8

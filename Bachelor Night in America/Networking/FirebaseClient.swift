@@ -22,9 +22,10 @@ class FirebaseClient {
         var contestants: [Contestant] = []
         ref.child("contestants").observeSingleEvent(of: .value) { (snapshot) in
             if let value = snapshot.value as? [[String:Any]] {
-                for (index, contestantDict) in value.enumerated() {
-                    let id = index
+                for (_, contestantDict) in value.enumerated() {
+                    let id = contestantDict["id"] as? Int ?? 0
                     let name = contestantDict["name"] as? String ?? ""
+                  
                     let age = contestantDict["age"] as? Int ?? 0
                     let hometown = contestantDict["hometown"] as? String ?? ""
                     let occupation = contestantDict["occupation"] as? String ?? ""

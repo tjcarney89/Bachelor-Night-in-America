@@ -68,7 +68,7 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         })
         self.availablePicks = contestants.filter({ (contestant) -> Bool in
             !currentUser.picks.contains(contestant.id) && contestant.status == .onShow
-        })
+        }).sorted { $0.name < $1.name }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
