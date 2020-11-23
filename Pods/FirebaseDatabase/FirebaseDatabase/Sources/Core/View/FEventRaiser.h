@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Utilities/FTypedefs.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@class FPath;
+@class FRepo;
+@class FIRDatabaseConfig;
 
-NS_ASSUME_NONNULL_BEGIN
+/**
+ * Left as instance methods rather than class methods so that we could
+ * potentially callback on different queues for different repos. This is
+ * semi-parallel to JS's FEventQueue
+ */
+@interface FEventRaiser : NSObject
 
-@interface GDTCOREvent ()
+- (id)initWithQueue:(dispatch_queue_t)queue;
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+- (void)raiseEvents:(NSArray *)eventDataList;
+- (void)raiseCallback:(fbt_void_void)callback;
+- (void)raiseCallbacks:(NSArray *)callbackList;
 
 @end
-
-NS_ASSUME_NONNULL_END

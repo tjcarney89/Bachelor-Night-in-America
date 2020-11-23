@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRDatabaseReference.h"
+#import <Foundation/Foundation.h>
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@interface FTupleFirebase : NSObject
 
-NS_ASSUME_NONNULL_BEGIN
-
-@interface GDTCOREvent ()
-
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+@property(nonatomic, strong) FIRDatabaseReference *one;
+@property(nonatomic, strong) FIRDatabaseReference *two;
+@property(nonatomic, strong) FIRDatabaseReference *three;
 
 @end
-
-NS_ASSUME_NONNULL_END

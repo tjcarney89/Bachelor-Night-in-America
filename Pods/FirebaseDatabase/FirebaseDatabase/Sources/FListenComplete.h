@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Core/Operation/FOperation.h"
+#import <Foundation/Foundation.h>
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@interface FListenComplete : NSObject <FOperation>
 
-NS_ASSUME_NONNULL_BEGIN
+- (id)initWithSource:(FOperationSource *)aSource path:(FPath *)aPath;
 
-@interface GDTCOREvent ()
-
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+@property(nonatomic, strong, readonly) FOperationSource *source;
+@property(nonatomic, strong, readonly) FPath *path;
+@property(nonatomic, readonly) FOperationType type;
 
 @end
-
-NS_ASSUME_NONNULL_END

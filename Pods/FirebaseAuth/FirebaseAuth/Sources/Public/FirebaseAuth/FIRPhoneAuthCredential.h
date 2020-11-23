@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,28 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import <TargetConditionals.h>
+#if TARGET_OS_IOS
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+#import <Foundation/Foundation.h>
+
+#import "FIRAuthCredential.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GDTCOREvent ()
+/** @class FIRPhoneAuthCredential
+    @brief Implementation of FIRAuthCredential for Phone Auth credentials.
+ */
+NS_SWIFT_NAME(PhoneAuthCredential)
+@interface FIRPhoneAuthCredential : FIRAuthCredential <NSSecureCoding>
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+/** @fn init
+    @brief This class is not supposed to be instantiated directly.
+ */
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

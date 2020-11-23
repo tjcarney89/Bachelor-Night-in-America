@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Core/View/FEvent.h"
+#import <Foundation/Foundation.h>
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@protocol FEventRegistration;
 
-NS_ASSUME_NONNULL_BEGIN
+@interface FCancelEvent : NSObject <FEvent>
 
-@interface GDTCOREvent ()
+- initWithEventRegistration:(id<FEventRegistration>)eventRegistration
+                      error:(NSError *)error
+                       path:(FPath *)path;
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+@property(nonatomic, strong, readonly) NSError *error;
+@property(nonatomic, strong, readonly) FPath *path;
 
 @end
-
-NS_ASSUME_NONNULL_END

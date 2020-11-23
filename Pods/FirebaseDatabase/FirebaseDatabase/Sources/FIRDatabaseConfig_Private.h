@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Api/FIRDatabaseConfig.h"
+#import "FirebaseDatabase/Sources/Login/FAuthTokenProvider.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@protocol FStorageEngine;
 
-NS_ASSUME_NONNULL_BEGIN
+@interface FIRDatabaseConfig ()
 
-@interface GDTCOREvent ()
+@property(nonatomic, readonly) BOOL isFrozen;
+@property(nonatomic, strong, readonly) NSString *sessionIdentifier;
+@property(nonatomic, strong, readonly) NSString *googleAppID;
+@property(nonatomic, strong) id<FAuthTokenProvider> authTokenProvider;
+@property(nonatomic, strong) id<FStorageEngine> forceStorageEngine;
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+- (void)freeze;
 
 @end
-
-NS_ASSUME_NONNULL_END

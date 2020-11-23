@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,15 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import <Foundation/Foundation.h>
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+#import "FirebaseDatabase/Sources/Core/View/FEventRegistration.h"
 
-NS_ASSUME_NONNULL_BEGIN
+/**
+ * A singleton event registration to mark a query as keep synced
+ */
+@interface FKeepSyncedEventRegistration : NSObject <FEventRegistration>
 
-@interface GDTCOREvent ()
-
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
++ (FKeepSyncedEventRegistration *)instance;
 
 @end
-
-NS_ASSUME_NONNULL_END

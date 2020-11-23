@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Public/FirebaseDatabase/FIRServerValue.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@implementation FIRServerValue
 
-NS_ASSUME_NONNULL_BEGIN
++ (NSDictionary *)timestamp {
+    static NSDictionary *timestamp = nil;
+    if (timestamp == nil) {
+        timestamp = @{@".sv" : @"timestamp"};
+    }
+    return timestamp;
+}
 
-@interface GDTCOREvent ()
-
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
++ (NSDictionary *)increment:(NSNumber *)delta {
+    return @{@".sv" : @{@"increment" : delta}};
+}
 
 @end
-
-NS_ASSUME_NONNULL_END

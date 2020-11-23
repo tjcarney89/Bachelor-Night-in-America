@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,32 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import <TargetConditionals.h>
+#if !TARGET_OS_OSX
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GDTCOREvent ()
+/**
+ *  @brief The APNs token type for the app.
+ */
+typedef NS_ENUM(NSInteger, FIRAuthAPNSTokenType) {
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
+  /** Unknown token type.
+      The actual token type will be detected from the provisioning profile in the app's bundle.
+   */
+  FIRAuthAPNSTokenTypeUnknown,
 
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+  /** Sandbox token type.
+   */
+  FIRAuthAPNSTokenTypeSandbox,
 
-@end
+  /** Production token type.
+   */
+  FIRAuthAPNSTokenTypeProd,
+} NS_SWIFT_NAME(AuthAPNSTokenType);
 
 NS_ASSUME_NONNULL_END
+
+#endif

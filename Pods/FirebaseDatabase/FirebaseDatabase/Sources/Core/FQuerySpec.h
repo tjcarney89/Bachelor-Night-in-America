@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,23 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import <Foundation/Foundation.h>
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+#import "FirebaseDatabase/Sources/Core/FQueryParams.h"
+#import "FirebaseDatabase/Sources/Core/Utilities/FPath.h"
+#import "FirebaseDatabase/Sources/FIndex.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface FQuerySpec : NSObject <NSCopying>
 
-@interface GDTCOREvent ()
+@property(nonatomic, strong, readonly) FPath *path;
+@property(nonatomic, strong, readonly) FQueryParams *params;
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
+- (id)initWithPath:(FPath *)path params:(FQueryParams *)params;
 
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
++ (FQuerySpec *)defaultQueryAtPath:(FPath *)path;
+
+- (id<FIndex>)index;
+- (BOOL)isDefault;
+- (BOOL)loadsAllData;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Utilities/Tuples/FTupleSetIdPath.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@implementation FTupleSetIdPath
 
-NS_ASSUME_NONNULL_BEGIN
+@synthesize path;
+@synthesize setId;
 
-@interface GDTCOREvent ()
-
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+- (id)initWithSetId:(NSNumber *)aSetId andPath:(FPath *)aPath {
+    self = [super init];
+    if (self) {
+        self.setId = aSetId;
+        self.path = aPath;
+    }
+    return self;
+}
 
 @end
-
-NS_ASSUME_NONNULL_END

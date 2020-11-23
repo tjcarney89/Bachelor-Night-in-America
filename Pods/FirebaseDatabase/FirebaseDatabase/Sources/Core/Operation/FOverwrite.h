@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,19 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/Core/Operation/FOperation.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
+@protocol FNode;
 
-NS_ASSUME_NONNULL_BEGIN
+@interface FOverwrite : NSObject <FOperation>
 
-@interface GDTCOREvent ()
+- (id)initWithSource:(FOperationSource *)aSource
+                path:(FPath *)aPath
+                snap:(id<FNode>)aSnap;
 
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
+@property(nonatomic, strong, readonly) FOperationSource *source;
+@property(nonatomic, readonly) FOperationType type;
+@property(nonatomic, strong, readonly) FPath *path;
+@property(nonatomic, strong, readonly) id<FNode> snap;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google
+ * Copyright 2017 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCOREvent.h"
+#import "FirebaseDatabase/Sources/FViewProcessorResult.h"
+#import "FirebaseDatabase/Sources/Core/View/FViewCache.h"
 
-#import "GoogleDataTransport/GDTCORLibrary/Public/GoogleDataTransport/GDTCORClock.h"
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface GDTCOREvent ()
-
-/** The unique ID of the event. This property is for testing only. */
-@property(nonatomic, readwrite) NSString *eventID;
-
-/** Generates a unique event ID. */
-+ (NSString *)nextEventID;
-
+@interface FViewProcessorResult ()
+@property(nonatomic, strong, readwrite) FViewCache *viewCache;
+@property(nonatomic, strong, readwrite) NSArray *changes;
 @end
 
-NS_ASSUME_NONNULL_END
+@implementation FViewProcessorResult
+- (id)initWithViewCache:(FViewCache *)viewCache changes:(NSArray *)changes {
+    self = [super init];
+    if (self) {
+        self.viewCache = viewCache;
+        self.changes = changes;
+    }
+    return self;
+}
+
+@end
