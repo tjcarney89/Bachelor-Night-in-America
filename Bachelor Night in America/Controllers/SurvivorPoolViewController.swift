@@ -53,6 +53,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
             
         }
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("didMakePick"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("didClearPicks"), object: nil)
         
         
     }

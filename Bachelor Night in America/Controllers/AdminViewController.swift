@@ -20,6 +20,17 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.userTableView.delegate = self
         self.userTableView.dataSource = self
         self.userTableView.tableFooterView = UIView()
+        fetchUsers()
+        FirebaseClient.fetchContestants { (contestants) in
+            self.contestants = contestants
+            DispatchQueue.main.async {
+                self.userTableView.reloadData()
+            }
+        }
+
+    }
+    
+    func fetchUsers() {
         FirebaseClient.fetchUsers { (users) in
             let picksIn = users.filter {$0.currentPick != nil}.sorted {$0.name < $1.name}
             let picksNotIn = users.filter {$0.currentPick == nil}.sorted {$0.name < $1.name}
@@ -29,13 +40,6 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.userTableView.reloadData()
             }
         }
-        FirebaseClient.fetchContestants { (contestants) in
-            self.contestants = contestants
-            DispatchQueue.main.async {
-                self.userTableView.reloadData()
-            }
-        }
-
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,26 +88,32 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func setSurvivorStatus() {
+    func setSurvivorStatus(completion: () -> ()) {
         for user in self.users {
-            for contestant in self.contestants {
-                if user.currentPick == contestant.id {
-                    if contestant.status == .offShow {
-                        FirebaseClient.updateSurvivorStatus(user: user, status: "Eliminated")
-                        break
-                    } else {
-                        FirebaseClient.updateSurvivorStatus(user: user, status: "Active")
-                        break
+            if user.status == .active {
+                for contestant in self.contestants {
+                    if user.currentPick == contestant.id {
+                        if contestant.status == .offShow {
+                            FirebaseClient.updateSurvivorStatus(user: user, status: "Eliminated")
+                            break
+                        } else {
+                            FirebaseClient.updateSurvivorStatus(user: user, status: "Active")
+                            break
+                        }
                     }
                 }
             }
         }
+        completion()
     }
     
     func resetPicks() {
         let alert = UIAlertController(title: "Picks Reset", message: "Are you sure you want to reset the picks for this week?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
-            FirebaseClient.resetAllPicks(users: self.users)
+            FirebaseClient.resetAllPicks(users: self.users) {
+                self.fetchUsers()
+                NotificationCenter.default.post(name: Notification.Name("didClearPicks"), object: nil)
+            }
         }
         let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         alert.addAction(yesAction)
@@ -122,7 +132,9 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.resetPicks()
         }
         let eliminateAction = UIAlertAction(title: "Update Elimination Statuses", style: .default) { (action) in
-            self.setSurvivorStatus()
+            self.setSurvivorStatus {
+                self.fetchUsers()
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         actionSheet.addAction(resetAction)

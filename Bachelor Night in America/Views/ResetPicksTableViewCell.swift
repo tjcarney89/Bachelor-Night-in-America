@@ -25,14 +25,5 @@ class ResetPicksTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func resetPicksButtonTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Picks Reset", message: "Are you sure you want to reset the picks for this week?", preferredStyle: .alert)
-        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
-            FirebaseClient.resetAllPicks(users: self.users)
-        }
-        let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
-        alert.addAction(yesAction)
-        alert.addAction(noAction)
-        callerVC?.present(alert, animated: true, completion: nil)
-    }
+
 }

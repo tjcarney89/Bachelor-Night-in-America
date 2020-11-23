@@ -142,10 +142,11 @@ class FirebaseClient {
         ref.child("users").child(self.appDelegate.currentUser!.id).child("picks").child(selectedPick).removeValue()
     }
     
-    class func resetAllPicks(users: [BNIAUser]) {
+    class func resetAllPicks(users: [BNIAUser], completion: () -> ()) {
         for user in users {
             ref.child("users").child(user.id).child("currentPick").setValue(nil)
         }
+        completion()
     }
     
     class func updateSurvivorStatus(user: BNIAUser, status: String) {
