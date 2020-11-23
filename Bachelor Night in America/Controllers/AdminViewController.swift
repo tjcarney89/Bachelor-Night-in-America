@@ -11,6 +11,10 @@ import UIKit
 class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var userTableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var loadingMessageLabel: UILabel!
+    @IBOutlet weak var checkmarkImageView: UIImageView!
     
     var users: [BNIAUser] = []
     var contestants: [Contestant] = []
@@ -20,6 +24,8 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.userTableView.delegate = self
         self.userTableView.dataSource = self
         self.userTableView.tableFooterView = UIView()
+        self.loadingView.layer.cornerRadius = 15
+        self.loadingView.alpha = 0
         fetchUsers()
         FirebaseClient.fetchContestants { (contestants) in
             self.contestants = contestants
@@ -89,6 +95,7 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func setSurvivorStatus(completion: () -> ()) {
+        self.startLoading(message: "Updating Statuses...")
         for user in self.users {
             if user.status == .active {
                 for contestant in self.contestants {
@@ -105,20 +112,51 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
         }
         completion()
+        self.stopLoading(message: "Statuses Updated")
     }
     
     func resetPicks() {
+        
         let alert = UIAlertController(title: "Picks Reset", message: "Are you sure you want to reset the picks for this week?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            self.startLoading(message: "Resetting Picks...")
             FirebaseClient.resetAllPicks(users: self.users) {
                 self.fetchUsers()
                 NotificationCenter.default.post(name: Notification.Name("didClearPicks"), object: nil)
+                self.stopLoading(message: "Picks Reset")
             }
         }
         let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         alert.addAction(yesAction)
         alert.addAction(noAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func startLoading(message: String) {
+        self.userTableView.isUserInteractionEnabled = false
+        self.loadingMessageLabel.text = message
+        self.loadingSpinner.startAnimating()
+        UIView.animate(withDuration: 0.25) {
+            self.loadingView.alpha = 0.4
+        }
+        
+        //self.loadingView.isHidden = false
+    }
+    
+    func stopLoading(message: String) {
+        self.loadingSpinner.stopAnimating()
+        self.loadingSpinner.isHidden = true
+        self.checkmarkImageView.isHidden = false
+        self.loadingMessageLabel.text = message
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.userTableView.isUserInteractionEnabled = true
+            UIView.animate(withDuration: 1.0) {
+                self.loadingView.alpha = 0
+                //self.loadingView.isHidden = true
+            }
+            
+        }
+        
     }
     
 

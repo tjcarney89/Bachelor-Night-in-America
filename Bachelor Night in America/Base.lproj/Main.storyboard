@@ -440,7 +440,40 @@
                             </button>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-2L-mGq">
                                 <rect key="frame" x="72.5" y="305" width="269" height="296"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aeL-fD-l3l">
+                                        <rect key="frame" x="114.5" y="130" width="40" height="36.5"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aeL-fD-l3l" secondAttribute="height" multiplier="1:1" id="01K-U5-YBN"/>
+                                            <constraint firstAttribute="width" constant="40" id="nAa-pz-gJ7"/>
+                                        </constraints>
+                                    </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-LT-Id0">
+                                        <rect key="frame" x="116" y="129.5" width="37" height="37"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="2oX-6B-FCB"/>
+                                            <constraint firstAttribute="width" constant="37" id="NRy-dy-Zuh"/>
+                                        </constraints>
+                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHZ-Kt-pf6">
+                                        <rect key="frame" x="109.5" y="174.5" width="50.5" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="aeL-fD-l3l" firstAttribute="centerX" secondItem="dbM-2L-mGq" secondAttribute="centerX" id="dOp-sG-7GT"/>
+                                    <constraint firstItem="gHZ-Kt-pf6" firstAttribute="top" secondItem="fWh-LT-Id0" secondAttribute="bottom" constant="8" id="ebg-NP-d30"/>
+                                    <constraint firstItem="fWh-LT-Id0" firstAttribute="centerY" secondItem="dbM-2L-mGq" secondAttribute="centerY" id="hwQ-jY-olf"/>
+                                    <constraint firstItem="aeL-fD-l3l" firstAttribute="centerY" secondItem="dbM-2L-mGq" secondAttribute="centerY" id="nJ5-Yg-qDN"/>
+                                    <constraint firstItem="fWh-LT-Id0" firstAttribute="centerX" secondItem="dbM-2L-mGq" secondAttribute="centerX" id="pxk-wa-h82"/>
+                                    <constraint firstItem="gHZ-Kt-pf6" firstAttribute="centerX" secondItem="dbM-2L-mGq" secondAttribute="centerX" id="qYb-Yj-ez0"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kp-nV-yI4">
                                 <rect key="frame" x="366" y="42" width="40" height="40"/>
@@ -456,11 +489,6 @@
                                     <action selector="menuButtonTapped:" destination="bPH-f8-PX5" eventType="touchUpInside" id="eq8-JZ-kJ6"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fWh-LT-Id0">
-                                <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n6x-0F-aJs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -473,10 +501,8 @@
                             <constraint firstItem="dbM-2L-mGq" firstAttribute="height" secondItem="0o3-PE-yqX" secondAttribute="height" multiplier="0.33" id="EvK-st-Kjf"/>
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="bottom" secondItem="n6x-0F-aJs" secondAttribute="bottom" constant="39" id="JLO-OX-VW3"/>
                             <constraint firstItem="FGS-BW-ATC" firstAttribute="centerY" secondItem="4qh-7s-Q4f" secondAttribute="centerY" id="MmC-iu-z5G"/>
-                            <constraint firstItem="fWh-LT-Id0" firstAttribute="centerX" secondItem="dbM-2L-mGq" secondAttribute="centerX" id="Ryo-j7-jkb"/>
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="width" secondItem="0o3-PE-yqX" secondAttribute="width" id="VXC-Oa-T9o"/>
                             <constraint firstItem="4qh-7s-Q4f" firstAttribute="centerX" secondItem="n6x-0F-aJs" secondAttribute="centerX" id="WiN-7m-OS5"/>
-                            <constraint firstItem="fWh-LT-Id0" firstAttribute="centerY" secondItem="dbM-2L-mGq" secondAttribute="centerY" id="f2Z-2G-mCP"/>
                             <constraint firstItem="fWD-Gz-MZK" firstAttribute="top" secondItem="4qh-7s-Q4f" secondAttribute="bottom" constant="4" id="fFf-uL-8dh"/>
                             <constraint firstItem="4Kp-nV-yI4" firstAttribute="centerY" secondItem="4qh-7s-Q4f" secondAttribute="centerY" id="kCX-cV-26U"/>
                             <constraint firstItem="n6x-0F-aJs" firstAttribute="trailing" secondItem="4Kp-nV-yI4" secondAttribute="trailing" constant="8" id="t8F-9b-Z3B"/>
@@ -486,6 +512,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="wrench.fill" catalog="system" id="nAf-yu-7Sl"/>
                     <connections>
+                        <outlet property="checkmarkImageView" destination="aeL-fD-l3l" id="0Lw-d6-cCn"/>
+                        <outlet property="loadingMessageLabel" destination="gHZ-Kt-pf6" id="H2y-bS-N9B"/>
+                        <outlet property="loadingSpinner" destination="fWh-LT-Id0" id="Quz-X0-x1O"/>
+                        <outlet property="loadingView" destination="dbM-2L-mGq" id="71j-7k-3W2"/>
                         <outlet property="userTableView" destination="fWD-Gz-MZK" id="Tc7-Uz-mNG"/>
                     </connections>
                 </viewController>
@@ -653,6 +683,7 @@
     </designables>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="logo" width="870" height="515"/>
         <image name="text.badge.checkmark" catalog="system" width="128" height="109"/>
