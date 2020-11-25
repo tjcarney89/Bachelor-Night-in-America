@@ -110,7 +110,7 @@ class ContestantDetailViewController: UIViewController {
         self.pickButton.layer.cornerRadius = 15
         
         if isEliminated {
-            self.pickButton.setTitle("You Have Been Eliminated", for: .disabled)
+            self.pickButton.setTitle("You Are Eliminated", for: .disabled)
             self.pickButton.backgroundColor = .darkGray
             self.pickButton.isEnabled = false
         } else if selectedContestant.status == .winner {

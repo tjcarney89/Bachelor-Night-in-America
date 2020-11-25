@@ -61,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
             print("USER LOGGED IN")
             let user = authDataResult!.user
             Defaults.add(value: true, for: Defaults.signedInKey)
+            
             if authDataResult?.additionalUserInfo!.isNewUser == true {
                 FirebaseClient.createUser(user: user)
                 Defaults.add(value: user.uid, for: Defaults.userIDKey)

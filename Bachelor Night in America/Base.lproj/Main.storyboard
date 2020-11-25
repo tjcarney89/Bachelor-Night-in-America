@@ -209,7 +209,7 @@
                                         <rect key="frame" x="0.0" y="8" width="414" height="279.5"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEi-PI-Jxs" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                        <rect key="frame" x="342.5" y="216" width="63.5" height="20.5"/>
+                                        <rect key="frame" x="326.5" y="206" width="79.5" height="30.5"/>
                                         <color key="backgroundColor" red="0.22344327372126005" green="0.67279352950308602" blue="0.41297568594979644" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -230,7 +230,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-fp-JUE" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                        <rect key="frame" x="324.5" y="243.5" width="81.5" height="20.5"/>
+                                        <rect key="frame" x="308.5" y="243.5" width="97.5" height="30.5"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -324,7 +324,7 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="7RD-ud-KMu"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="WK5-zM-SbG"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjw-j0-roP">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Xjw-j0-roP">
                                 <rect key="frame" x="52" y="684" width="310.5" height="60"/>
                                 <color key="backgroundColor" name="Muted Red"/>
                                 <constraints>
@@ -675,10 +675,10 @@
     </scenes>
     <designables>
         <designable name="GEi-PI-Jxs">
-            <size key="intrinsicContentSize" width="63.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="79.5" height="30.5"/>
         </designable>
         <designable name="Tgt-fp-JUE">
-            <size key="intrinsicContentSize" width="81.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="97.5" height="30.5"/>
         </designable>
     </designables>
     <resources>
