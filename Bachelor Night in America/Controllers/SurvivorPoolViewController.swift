@@ -42,7 +42,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         self.contestantsCollectionView.dataSource = self
 //        Defaults.removeObject(key: Defaults.signedInKey)
 //        Defaults.all().setValue(nil, forKey: Defaults.userIDKey)
-        self.scheduleNotifications()
+        //self.scheduleNotifications()
         FirebaseClient.fetchContestants { (contestants) in
             self.contestants = contestants.sorted {$0.name < $1.name}
             DispatchQueue.main.async {
@@ -66,7 +66,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
         if let userID = Defaults.all().string(forKey: Defaults.userIDKey) {
             FirebaseClient.fetchUser(id: userID) { (user) in
                 self.appDelegate.currentUser = user
-                //self.currentUser = user
+                self.scheduleNotifications()
                 DispatchQueue.main.async {
                     self.contestantsCollectionView.reloadData()
                 }
@@ -99,8 +99,12 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     func scheduleNotifications() {
         let manager = LocalNotificationManager()
         let pickNotification = LocalNotification(id: "pick-notification", title: "Survivor Pool", body: "Don't forget to submit your pick!", datetime: DateComponents(calendar: .current, timeZone: .current, hour: 18, minute: 00, weekday: 3))
+        
         manager.notifications = [pickNotification]
-        manager.schedule()
+        if let currentUser = self.appDelegate.currentUser {
+            manager.schedule(status: currentUser.status)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -15,7 +15,10 @@ class LocalNotificationManager {
     func listScheduledNotifications() {
         UNUserNotificationCenter.current().getPendingNotificationRequests { (notifications) in
             for notification in notifications {
-                print(notification)
+                print("NOTIFICATION: \(notification)")
+            }
+            if notifications.count == 0 {
+                print("NO NOTIFICATIONS SCHEDULED")
             }
         }
     }
@@ -28,13 +31,17 @@ class LocalNotificationManager {
         }
     }
     
-    func schedule() {
+    func schedule(status: SurvivorStatus) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch settings.authorizationStatus {
             case .notDetermined:
                 self.requestAuthorization()
             case .authorized, .provisional:
-                self.scheduleNotifications()
+                if status == .active {
+                    self.scheduleNotifications()
+                } else if status == .eliminated {
+                    self.removeNotifications()
+                }
             default:
                 break
             }
@@ -57,6 +64,11 @@ class LocalNotificationManager {
                 print("Notification Scheduled! -- ID: \(notification.id)")
             }
         }
+        self.listScheduledNotifications()
+    }
+    
+    private func removeNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         self.listScheduledNotifications()
     }
 }
