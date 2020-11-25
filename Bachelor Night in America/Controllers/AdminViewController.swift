@@ -122,6 +122,7 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.startLoading(message: "Resetting Picks...")
             FirebaseClient.resetAllPicks(users: self.users) {
                 self.fetchUsers()
+                Picks.store.removeCurrentPick()
                 NotificationCenter.default.post(name: Notification.Name("didClearPicks"), object: nil)
                 self.stopLoading(message: "Picks Reset")
             }
