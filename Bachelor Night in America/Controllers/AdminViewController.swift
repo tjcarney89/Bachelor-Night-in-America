@@ -19,6 +19,7 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var users: [BNIAUser] = []
     var contestants: [Contestant] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userTableView.delegate = self
@@ -98,6 +99,13 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.startLoading(message: "Updating Statuses...")
         for user in self.users {
             if user.status == .active {
+                let availablePicks = self.contestants.filter({ (contestant) -> Bool in
+                    !user.picks.contains(contestant.id) && contestant.status == .onShow
+                })
+                if availablePicks.count == 0 {
+                    FirebaseClient.updateSurvivorStatus(user: user, status: "Eliminated")
+                    break
+                }
                 for contestant in self.contestants {
                     if user.currentPick == contestant.id {
                         if contestant.status == .offShow {

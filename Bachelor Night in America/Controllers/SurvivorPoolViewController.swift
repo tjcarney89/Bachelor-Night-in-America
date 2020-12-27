@@ -98,7 +98,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     
     func scheduleNotifications() {
         let manager = LocalNotificationManager()
-        let pickNotification = LocalNotification(id: "pick-notification", title: "Survivor Pool", body: "Don't forget to submit your pick!", datetime: DateComponents(calendar: .current, timeZone: .current, hour: 18, minute: 00, weekday: 3))
+        let pickNotification = LocalNotification(id: "pick-notification", title: "Survivor Pool", body: "Don't forget to submit your pick!", datetime: DateComponents(calendar: .current, timeZone: .current, hour: 18, minute: 00, weekday: 2))
         
         manager.notifications = [pickNotification]
         if let currentUser = self.appDelegate.currentUser {
