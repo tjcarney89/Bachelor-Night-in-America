@@ -44,7 +44,9 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
 //        Defaults.all().setValue(nil, forKey: Defaults.userIDKey)
         //self.scheduleNotifications()
         FirebaseClient.fetchContestants { (contestants) in
-            self.contestants = contestants.sorted {$0.name < $1.name}
+            let onShow = contestants.filter {$0.status != .offShow}.sorted {$0.name < $1.name}
+            let offShow = contestants.filter {$0.status == .offShow}.sorted {$0.name < $1.name}
+            self.contestants = onShow + offShow
             DispatchQueue.main.async {
                 self.contestantsCollectionView.reloadData()
 //                self.loadingView.isHidden = true
