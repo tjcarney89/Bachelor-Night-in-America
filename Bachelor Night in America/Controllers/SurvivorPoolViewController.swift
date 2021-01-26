@@ -38,6 +38,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Defaults.all().setValue(false, forKey: Defaults.signedInKey)
         self.contestantsCollectionView.delegate = self
         self.contestantsCollectionView.dataSource = self
 //        Defaults.removeObject(key: Defaults.signedInKey)

@@ -29,10 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
         let authViewController = authUI?.authViewController()
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let survivorVC = storyboard.instantiateViewController(identifier: "survivor") as! SurvivorPoolViewController
+        let mainNav = storyboard.instantiateViewController(identifier: "navController") as! UINavigationController
         if Defaults.all().bool(forKey: Defaults.signedInKey) == true {
             print("USER SIGNED IN")
-//            self.window?.rootViewController = survivorVC
-//            window?.makeKeyAndVisible()
+            self.window?.rootViewController = mainNav
+            window?.makeKeyAndVisible()
         } else {
             print("USER NOT FOUND")
             self.window?.rootViewController = authViewController
@@ -61,15 +62,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, FUIAuthDelegate {
             print("USER LOGGED IN")
             let user = authDataResult!.user
             Defaults.add(value: true, for: Defaults.signedInKey)
+            Defaults.add(value: user.uid, for: Defaults.userIDKey)
             
             if authDataResult?.additionalUserInfo!.isNewUser == true {
                 FirebaseClient.createUser(user: user)
-                Defaults.add(value: user.uid, for: Defaults.userIDKey)
+                
             }
             
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-            let survivorVC = storyboard.instantiateViewController(identifier: "survivor") as! SurvivorPoolViewController
-            window?.rootViewController = survivorVC
+            let mainNav = storyboard.instantiateViewController(identifier: "navController") as! UINavigationController
+            //let survivorVC = storyboard.instantiateViewController(identifier: "survivor") as! SurvivorPoolViewController
+            window?.rootViewController = mainNav
         }
     }
     
