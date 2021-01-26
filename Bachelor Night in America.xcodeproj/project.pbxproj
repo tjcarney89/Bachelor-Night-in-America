@@ -26,6 +26,7 @@
 		F0B13CC824A76DAA008237AC /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B13CC724A76DAA008237AC /* FirebaseClient.swift */; };
 		F0B13CCA24A774C5008237AC /* ContestantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B13CC924A774C5008237AC /* ContestantCollectionViewCell.swift */; };
 		F0B247EC25BFC7EA00D7A016 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0B247EB25BFC7EA00D7A016 /* GoogleService-Info.plist */; };
+		F0B2481025C0596B00D7A016 /* ContestantDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2480F25C0596B00D7A016 /* ContestantDetailCollectionViewCell.swift */; };
 		F0B345272559D78900C115B0 /* SurvivorStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B345262559D78900C115B0 /* SurvivorStatus.swift */; };
 		F0EEB60924A2EABA00E0EC46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB60824A2EABA00E0EC46 /* AppDelegate.swift */; };
 		F0EEB60D24A2EABA00E0EC46 /* SurvivorPoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EEB60C24A2EABA00E0EC46 /* SurvivorPoolViewController.swift */; };
@@ -60,6 +61,7 @@
 		F0B13CC724A76DAA008237AC /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		F0B13CC924A774C5008237AC /* ContestantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestantCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0B247EB25BFC7EA00D7A016 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F0B2480F25C0596B00D7A016 /* ContestantDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestantDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0B345262559D78900C115B0 /* SurvivorStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivorStatus.swift; sourceTree = "<group>"; };
 		F0EEB60524A2EABA00E0EC46 /* Bachelor Night in America.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bachelor Night in America.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EEB60824A2EABA00E0EC46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				F059D4A124D1105B00450B1F /* UserTableViewCell.swift */,
 				F0A76A082518348E006EFB4A /* PreviousPickTableViewCell.swift */,
 				F03A79FD2544754D00293697 /* ResetPicksTableViewCell.swift */,
+				F0B2480F25C0596B00D7A016 /* ContestantDetailCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				F059D4A024D10EF700450B1F /* BNIAUser.swift in Sources */,
 				F059D4A224D1105B00450B1F /* UserTableViewCell.swift in Sources */,
 				F0444F9A24B94547009BD3C9 /* PicksStore.swift in Sources */,
+				F0B2481025C0596B00D7A016 /* ContestantDetailCollectionViewCell.swift in Sources */,
 				F0FE099C24C7D69F009EA14E /* AdminViewController.swift in Sources */,
 				F0B345272559D78900C115B0 /* SurvivorStatus.swift in Sources */,
 				F0EEB60924A2EABA00E0EC46 /* AppDelegate.swift in Sources */,

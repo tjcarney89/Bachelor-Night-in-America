@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseStorage
 
-class ContestantDetailViewController: UIViewController {
+class ContestantDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var contestantImageView: UIImageView!
     @IBOutlet weak var nameAgeLabel: UILabel!
@@ -21,11 +21,14 @@ class ContestantDetailViewController: UIViewController {
     @IBOutlet weak var statusLabel: PaddingLabel!
     @IBOutlet weak var availabilityLabel: PaddingLabel!
     
-    var selectedContestant: Contestant!
-    var hasBeenPicked: Bool {
-        Picks.store.allPicks.contains(selectedContestant.id)
-    }
     
+    @IBOutlet weak var contestantDetailCollectionView: UICollectionView!
+    var contestants: [Contestant] = []
+    var selectedContestant: Contestant!
+    var collectionWidth: CGFloat {
+        return self.contestantDetailCollectionView.frame.width
+    }
+    var firstTime = true
     var pickSubmitted: Bool {
         (Picks.store.currentPick != nil)
     }
@@ -40,141 +43,100 @@ class ContestantDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.contestantDetailCollectionView.delegate = self
+        self.contestantDetailCollectionView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.configureUI()
     }
     
-    func configureUI() {
+    override func viewWillLayoutSubviews() {
+        let selectedContestantIndex = self.contestants.firstIndex { (contestant) -> Bool in
+            contestant.id == self.selectedContestant.id
+        }
+        let offsetWidth = self.collectionWidth * CGFloat(selectedContestantIndex!)
+        if self.firstTime == true {
+            self.contestantDetailCollectionView.setContentOffset(CGPoint(x: offsetWidth, y: 0), animated: false)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.firstTime = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.contestants.count
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailCell", for: indexPath) as! ContestantDetailCollectionViewCell
+        let currentContestant = self.contestants[indexPath.row]
+        let hasBeenPicked = Picks.store.allPicks.contains(currentContestant.id)
+        cell.pickButton.tag = indexPath.row
+        cell.pickButton.addTarget(self, action: #selector(pickButtonTapped(_:)), for: .touchUpInside)
         let placeholder = UIImage(named: "female")
-        let ref = FirebaseClient.storage.child("contestants/\(selectedContestant.imagePath)")
-        self.contestantImageView.sd_setImage(with: ref, placeholderImage: placeholder)
-        self.nameAgeLabel.text = "\(selectedContestant.name), \(selectedContestant.age)"
-        self.occupationLabel.text = selectedContestant.occupation
-        self.hometownLabel.text = selectedContestant.hometown
-        let bulletedFacts = selectedContestant.funFacts.map { return "🌹 " + $0}
-        self.bioTextView.text = selectedContestant.bio
-        self.funFactsTextView.text = bulletedFacts.joined(separator: "\n")
-        self.bioTextView.textContainerInset = UIEdgeInsets.zero
-        self.bioTextView.textContainer.lineFragmentPadding = 0
-        self.setUpIndicatorLabels()
-        self.setUpPickButton()
+        let ref = FirebaseClient.storage.child("contestants/\(currentContestant.imagePath)")
+        cell.contestantImageView.sd_setImage(with: ref, placeholderImage: placeholder)
+        cell.nameAgeLabel.text = "\(currentContestant.name), \(currentContestant.age)"
+        cell.occupationLabel.text = currentContestant.occupation
+        cell.hometownLabel.text = currentContestant.hometown
+        let bulletedFacts = currentContestant.funFacts.map { return "🌹 " + $0}
+        cell.bioTextView.text = currentContestant.bio
+        cell.funFactsTextView.text = bulletedFacts.joined(separator: "\n")
+        cell.setUpIndicatorLabels(currentContestant: currentContestant, hasBeenPicked: hasBeenPicked, currentPick: currentPick, isEliminated: isEliminated)
+        cell.setUpPickButton(currentContestant: currentContestant, currentPick: currentPick, pickSubmitted: pickSubmitted, isEliminated: isEliminated)
+        return cell
         
     }
     
-    func setUpIndicatorLabels() {
-        self.statusLabel.layer.cornerRadius = 10
-        self.statusLabel.layer.masksToBounds = true
-        self.availabilityLabel.layer.cornerRadius = 10
-        self.availabilityLabel.layer.masksToBounds = true
-        
-        if selectedContestant.status == .winner {
-            self.statusLabel.backgroundColor = AppColors.yellow
-            self.statusLabel.text = "Winner"
-            self.availabilityLabel.backgroundColor = AppColors.red
-            self.availabilityLabel.text = "Unavailable"
-        } else if selectedContestant.status == .onShow && !hasBeenPicked {
-            self.statusLabel.backgroundColor = AppColors.green
-            self.statusLabel.text = "On Show"
-            self.availabilityLabel.backgroundColor = AppColors.green
-            self.availabilityLabel.text = "Available"
-        } else if selectedContestant.status == .onShow && hasBeenPicked {
-            self.statusLabel.backgroundColor = AppColors.green
-            self.statusLabel.text = "On Show"
-            if currentPick == selectedContestant.id {
-                self.availabilityLabel.backgroundColor = AppColors.green
-                self.availabilityLabel.text = "Current Pick"
-            } else {
-                self.availabilityLabel.backgroundColor = AppColors.red
-                self.availabilityLabel.text = "Previously Picked"
-            }
-        } else if selectedContestant.status == .offShow {
-            self.statusLabel.backgroundColor = AppColors.red
-            self.statusLabel.text = "Eliminated"
-            self.availabilityLabel.backgroundColor = AppColors.red
-            self.availabilityLabel.text = "Unavailable"
-        }
-        
-        if isEliminated {
-            self.availabilityLabel.backgroundColor = AppColors.red
-            self.availabilityLabel.text = "Unavailable"
-        }
-        
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
-    func setUpPickButton() {
-        self.pickButton.layer.cornerRadius = 15
-        
-        if isEliminated {
-            self.pickButton.setTitle("You Are Eliminated", for: .disabled)
-            self.pickButton.backgroundColor = .darkGray
-            self.pickButton.isEnabled = false
-        } else if selectedContestant.status == .winner {
-            self.pickButton.isHidden = true
-        }  else {
-            if pickSubmitted {
-                if currentPick == selectedContestant.id {
-                    self.pickButton.setTitle("Remove Pick", for: .normal)
-                } else {
-                    self.pickButton.setTitle("Change Pick", for: .normal)
-                }
-                
-            } else {
-                self.pickButton.setTitle("Pick", for: .normal)
-            }
-            
-            if Picks.store.allPicks.contains(selectedContestant.id) {
-                if currentPick == selectedContestant.id {
-                    self.pickButton.isEnabled = true
-                    self.pickButton.isHidden = false
-                } else {
-                    self.pickButton.isEnabled = false
-                    self.pickButton.isHidden = true
-                }
-            } else if selectedContestant.status == .offShow {
-                self.pickButton.isEnabled = false
-                self.pickButton.isHidden = true
-            } else {
-                self.pickButton.isEnabled = true
-                self.pickButton.isHidden = false
-            }
-        }
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
-    @IBAction func pickButtonTapped(_ sender: Any) {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        let height = collectionView.frame.height
+        return CGSize(width: width, height: height)
+    }
+    
+    @objc func pickButtonTapped(_ sender: UIButton) {
+        let pickedContestant = contestants[sender.tag]
+        let cell = sender.superview?.superview as! ContestantDetailCollectionViewCell
         if pickSubmitted {
             let previousPick = self.currentPick
             Picks.store.removePick(id: currentPick!)
             Picks.store.removeCurrentPick()
-            if previousPick != selectedContestant.id {
-                Picks.store.addPick(id: selectedContestant.id)
-                self.pickButton.isEnabled = false
-                self.pickButton.backgroundColor = .darkGray
-                self.pickButton.setTitle("Pick Submitted", for: .disabled)
-                self.availabilityLabel.backgroundColor = AppColors.green
-                self.availabilityLabel.text = "Current Pick"
+            if previousPick != pickedContestant.id {
+                Picks.store.addPick(id: pickedContestant.id)
+                cell.pickButton.isEnabled = false
+                cell.pickButton.backgroundColor = .darkGray
+                cell.pickButton.setTitle("Pick Submitted", for: .disabled)
+                cell.availabilityLabel.backgroundColor = AppColors.green
+                cell.availabilityLabel.text = "Current Pick"
             } else {
-                self.pickButton.isEnabled = true
-                self.pickButton.backgroundColor = AppColors.red
-                self.pickButton.setTitle("Pick", for: .normal)
-                self.availabilityLabel.backgroundColor = AppColors.green
-                self.availabilityLabel.text = "Available"
+                cell.pickButton.isEnabled = true
+                cell.pickButton.backgroundColor = AppColors.red
+                cell.pickButton.setTitle("Pick", for: .normal)
+                cell.availabilityLabel.backgroundColor = AppColors.green
+                cell.availabilityLabel.text = "Available"
             }
         } else {
-            Picks.store.addPick(id: selectedContestant.id)
-            self.pickButton.isEnabled = false
-            self.pickButton.backgroundColor = .darkGray
-            self.pickButton.setTitle("Pick Submitted", for: .disabled)
-            self.availabilityLabel.backgroundColor = AppColors.green
-            self.availabilityLabel.text = "Current Pick"
+            Picks.store.addPick(id: pickedContestant.id)
+            cell.pickButton.isEnabled = false
+            cell.pickButton.backgroundColor = .darkGray
+            cell.pickButton.setTitle("Pick Submitted", for: .disabled)
+            cell.availabilityLabel.backgroundColor = AppColors.green
+            cell.availabilityLabel.text = "Current Pick"
         }
         NotificationCenter.default.post(name: Notification.Name("didMakePick"), object: nil)
     }
+    
     
     /*
     // MARK: - Navigation

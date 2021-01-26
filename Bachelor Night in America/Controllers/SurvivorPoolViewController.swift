@@ -188,6 +188,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
             if let detailVC = segue.destination as? ContestantDetailViewController {
+                detailVC.contestants = self.contestants
                 detailVC.selectedContestant = self.contestants[(self.contestantsCollectionView.indexPathsForSelectedItems?.first!.row)!]
                 
             }
