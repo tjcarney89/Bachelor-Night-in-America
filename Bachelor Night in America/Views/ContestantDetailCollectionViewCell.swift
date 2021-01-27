@@ -38,6 +38,8 @@ class ContestantDetailCollectionViewCell: UICollectionViewCell {
         self.availabilityLabel.backgroundColor = AppColors.red
         self.pickButton.isEnabled = true
         self.pickButton.backgroundColor = AppColors.red
+        self.pickButton.setTitle("", for: .normal)
+
 
     }
     

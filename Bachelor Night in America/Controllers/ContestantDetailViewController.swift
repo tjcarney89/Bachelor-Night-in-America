@@ -134,6 +134,7 @@ class ContestantDetailViewController: UIViewController, UICollectionViewDelegate
             cell.availabilityLabel.backgroundColor = AppColors.green
             cell.availabilityLabel.text = "Current Pick"
         }
+        self.contestantDetailCollectionView.reloadData()
         NotificationCenter.default.post(name: Notification.Name("didMakePick"), object: nil)
     }
     
