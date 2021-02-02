@@ -85,7 +85,8 @@ class ContestantDetailViewController: UIViewController, UICollectionViewDelegate
         let bulletedFacts = currentContestant.funFacts.map { return "🌹 " + $0}
         cell.bioTextView.text = currentContestant.bio
         cell.funFactsTextView.text = bulletedFacts.joined(separator: "\n")
-        cell.setUpIndicatorLabels(currentContestant: currentContestant, hasBeenPicked: hasBeenPicked, currentPick: currentPick, isEliminated: isEliminated)
+        let arp = currentContestant.arp
+        cell.setUpIndicatorLabels(currentContestant: currentContestant, hasBeenPicked: hasBeenPicked, currentPick: currentPick, isEliminated: isEliminated, currentARP: arp, highestARP: 18.75)
         cell.setUpPickButton(currentContestant: currentContestant, currentPick: currentPick, pickSubmitted: pickSubmitted, isEliminated: isEliminated)
         return cell
         

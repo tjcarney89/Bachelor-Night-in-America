@@ -19,6 +19,7 @@ class ContestantDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pickButton: UIButton!
     @IBOutlet weak var statusLabel: PaddingLabel!
     @IBOutlet weak var availabilityLabel: PaddingLabel!
+    @IBOutlet weak var arpLabel: PaddingLabel!
     
     
     override func awakeFromNib() {
@@ -43,11 +44,30 @@ class ContestantDetailCollectionViewCell: UICollectionViewCell {
 
     }
     
-    func setUpIndicatorLabels(currentContestant: Contestant, hasBeenPicked: Bool, currentPick: Int?, isEliminated: Bool) {
+    func setUpIndicatorLabels(currentContestant: Contestant, hasBeenPicked: Bool, currentPick: Int?, isEliminated: Bool, currentARP: Double?, highestARP: Double) {
+        
         self.statusLabel.layer.cornerRadius = 10
         self.statusLabel.layer.masksToBounds = true
         self.availabilityLabel.layer.cornerRadius = 10
         self.availabilityLabel.layer.masksToBounds = true
+        self.arpLabel.layer.cornerRadius = 10
+        self.arpLabel.layer.masksToBounds = true
+        if let currentARP = currentARP {
+            self.arpLabel.isHidden = false
+            self.arpLabel.text = "ARP: \(currentARP)"
+            let percentile = floor((currentARP/highestARP) * 100)
+            if percentile < 33 {
+                self.arpLabel.backgroundColor = AppColors.green
+            } else if percentile >= 33 && percentile < 67 {
+                self.arpLabel.backgroundColor = AppColors.yellow
+            } else if percentile >= 67 {
+                self.arpLabel.backgroundColor = AppColors.red
+            }
+        } else {
+            self.arpLabel.isHidden = true
+        }
+        
+
         
         if currentContestant.status == .winner {
             self.statusLabel.backgroundColor = AppColors.yellow

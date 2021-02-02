@@ -226,7 +226,7 @@
                                                             <rect key="frame" x="0.0" y="8" width="413" height="285"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEi-PI-Jxs" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                                            <rect key="frame" x="325.5" y="211.5" width="79.5" height="30.5"/>
+                                                            <rect key="frame" x="341.5" y="221.5" width="63.5" height="20.5"/>
                                                             <color key="backgroundColor" red="0.22344327372126005" green="0.67279352950308602" blue="0.41297568594979644" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,7 +247,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unavailable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-fp-JUE" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
-                                                            <rect key="frame" x="307.5" y="249" width="97.5" height="30.5"/>
+                                                            <rect key="frame" x="323.5" y="249" width="81.5" height="20.5"/>
                                                             <color key="backgroundColor" systemColor="systemRedColor"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -310,11 +310,33 @@
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ih-w9-2rp" customClass="PaddingLabel" customModule="Bachelor_Night_in_America" customModuleProvider="target">
+                                                            <rect key="frame" x="8" y="24" width="63.5" height="20.5"/>
+                                                            <color key="backgroundColor" red="0.2234432737" green="0.67279352950000004" blue="0.4129756859" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                    <real key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                    <real key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="p6i-M5-s7u" firstAttribute="top" secondItem="lVI-V7-G1m" secondAttribute="bottom" constant="32" id="9wJ-cM-pFl"/>
                                                         <constraint firstItem="tGn-81-FnF" firstAttribute="top" secondItem="7Lz-QL-05t" secondAttribute="bottom" constant="4" id="Av9-RJ-tTT"/>
                                                         <constraint firstItem="tGn-81-FnF" firstAttribute="leading" secondItem="uzp-Yt-9pF" secondAttribute="leading" id="EXT-cj-mpp"/>
+                                                        <constraint firstItem="0ih-w9-2rp" firstAttribute="top" secondItem="lVI-V7-G1m" secondAttribute="top" constant="16" id="Fwb-ta-bmS"/>
                                                         <constraint firstItem="lVI-V7-G1m" firstAttribute="bottom" secondItem="Tgt-fp-JUE" secondAttribute="top" constant="44" id="HSc-8k-wlq"/>
                                                         <constraint firstItem="6X4-NZ-aTp" firstAttribute="top" secondItem="p6i-M5-s7u" secondAttribute="bottom" id="HbC-yK-hAZ"/>
                                                         <constraint firstItem="lVI-V7-G1m" firstAttribute="trailing" secondItem="Tgt-fp-JUE" secondAttribute="trailing" constant="8" id="IWr-iA-FOB"/>
@@ -330,6 +352,7 @@
                                                         <constraint firstItem="7Lz-QL-05t" firstAttribute="leading" secondItem="uzp-Yt-9pF" secondAttribute="leading" id="ed1-we-W1M"/>
                                                         <constraint firstAttribute="bottom" secondItem="tGn-81-FnF" secondAttribute="bottom" id="eu5-Ar-KZY"/>
                                                         <constraint firstItem="p6i-M5-s7u" firstAttribute="leading" secondItem="mhH-zR-jyi" secondAttribute="leading" constant="24" id="mps-ol-T8n"/>
+                                                        <constraint firstItem="0ih-w9-2rp" firstAttribute="leading" secondItem="lVI-V7-G1m" secondAttribute="leading" constant="8" id="nEJ-WT-WGc"/>
                                                         <constraint firstItem="tGn-81-FnF" firstAttribute="trailing" secondItem="uzp-Yt-9pF" secondAttribute="trailing" id="szI-pT-QyJ"/>
                                                         <constraint firstItem="uzp-Yt-9pF" firstAttribute="leading" secondItem="cTn-jf-zcn" secondAttribute="leading" id="tZ3-8J-aDg"/>
                                                         <constraint firstItem="tGn-81-FnF" firstAttribute="centerX" secondItem="mhH-zR-jyi" secondAttribute="centerX" id="u8c-4n-YRG"/>
@@ -365,6 +388,7 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="413" height="825"/>
                                         <connections>
+                                            <outlet property="arpLabel" destination="0ih-w9-2rp" id="ChL-Cj-omT"/>
                                             <outlet property="availabilityLabel" destination="Tgt-fp-JUE" id="FDI-v7-e7b"/>
                                             <outlet property="bioTextView" destination="uzp-Yt-9pF" id="Ltj-oz-Icx"/>
                                             <outlet property="contestantImageView" destination="lVI-V7-G1m" id="5Nf-Su-dZj"/>
@@ -703,11 +727,14 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="0ih-w9-2rp">
+            <size key="intrinsicContentSize" width="63.5" height="20.5"/>
+        </designable>
         <designable name="GEi-PI-Jxs">
-            <size key="intrinsicContentSize" width="79.5" height="30.5"/>
+            <size key="intrinsicContentSize" width="63.5" height="20.5"/>
         </designable>
         <designable name="Tgt-fp-JUE">
-            <size key="intrinsicContentSize" width="97.5" height="30.5"/>
+            <size key="intrinsicContentSize" width="81.5" height="20.5"/>
         </designable>
     </designables>
     <resources>

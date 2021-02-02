@@ -25,7 +25,6 @@ class FirebaseClient {
                 for (_, contestantDict) in value.enumerated() {
                     let id = contestantDict["id"] as? Int ?? 0
                     let name = contestantDict["name"] as? String ?? ""
-                  
                     let age = contestantDict["age"] as? Int ?? 0
                     let hometown = contestantDict["hometown"] as? String ?? ""
                     let occupation = contestantDict["occupation"] as? String ?? ""
@@ -34,7 +33,9 @@ class FirebaseClient {
                     let imagePath = contestantDict["image_path"] as? String ?? ""
                     let bio = contestantDict["bio"] as? String ?? ""
                     let funFacts = contestantDict["fun_facts"] as? [String] ?? []
-                    let newContestant = Contestant(id: id, name: name, age: age, hometown: hometown, occupation: occupation, status: status!, bio: bio, imagePath: imagePath, funFacts: funFacts)
+                    let stats = contestantDict["stats"] as? [String:Any] ?? [:]
+                    let arp = stats["arp"] as? Double ?? nil
+                    let newContestant = Contestant(id: id, name: name, age: age, hometown: hometown, occupation: occupation, status: status!, bio: bio, imagePath: imagePath, funFacts: funFacts, arp: arp)
                     contestants.append(newContestant)
                     print(contestants.count)
                     

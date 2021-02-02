@@ -19,5 +19,5 @@ struct Contestant {
     let bio: String
     let imagePath: String
     let funFacts: [String]
-    
+    let arp: Double?
 }
