@@ -104,39 +104,45 @@ class ContestantDetailCollectionViewCell: UICollectionViewCell {
     
     func setUpPickButton(currentContestant: Contestant, currentPick: Int?, pickSubmitted: Bool, isEliminated: Bool) {
         self.pickButton.layer.cornerRadius = 15
-        
-        if isEliminated {
-            self.pickButton.setTitle("You Are Eliminated", for: .disabled)
+        if Defaults.all().bool(forKey: Defaults.canPickKey) == false {
+            self.pickButton.isHidden = false
+            self.pickButton.setTitle("Episode in Progress", for: .disabled)
             self.pickButton.backgroundColor = .darkGray
             self.pickButton.isEnabled = false
-        } else if currentContestant.status == .winner {
-            self.pickButton.isHidden = true
-        }  else {
-            if pickSubmitted {
-                if currentPick == currentContestant.id {
-                    self.pickButton.setTitle("Remove Pick", for: .normal)
+        } else {
+            if isEliminated {
+                self.pickButton.setTitle("You Are Eliminated", for: .disabled)
+                self.pickButton.backgroundColor = .darkGray
+                self.pickButton.isEnabled = false
+            } else if currentContestant.status == .winner {
+                self.pickButton.isHidden = true
+            }  else {
+                if pickSubmitted {
+                    if currentPick == currentContestant.id {
+                        self.pickButton.setTitle("Remove Pick", for: .normal)
+                    } else {
+                        self.pickButton.setTitle("Change Pick", for: .normal)
+                    }
+                    
                 } else {
-                    self.pickButton.setTitle("Change Pick", for: .normal)
+                    self.pickButton.setTitle("Pick", for: .normal)
                 }
                 
-            } else {
-                self.pickButton.setTitle("Pick", for: .normal)
-            }
-            
-            if Picks.store.allPicks.contains(currentContestant.id) {
-                if currentPick == currentContestant.id {
-                    self.pickButton.isEnabled = true
-                    self.pickButton.isHidden = false
-                } else {
+                if Picks.store.allPicks.contains(currentContestant.id) {
+                    if currentPick == currentContestant.id {
+                        self.pickButton.isEnabled = true
+                        self.pickButton.isHidden = false
+                    } else {
+                        self.pickButton.isEnabled = false
+                        self.pickButton.isHidden = true
+                    }
+                } else if currentContestant.status == .offShow {
                     self.pickButton.isEnabled = false
                     self.pickButton.isHidden = true
+                } else {
+                    self.pickButton.isEnabled = true
+                    self.pickButton.isHidden = false
                 }
-            } else if currentContestant.status == .offShow {
-                self.pickButton.isEnabled = false
-                self.pickButton.isHidden = true
-            } else {
-                self.pickButton.isEnabled = true
-                self.pickButton.isHidden = false
             }
         }
     }

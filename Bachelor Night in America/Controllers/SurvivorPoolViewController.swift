@@ -66,6 +66,7 @@ class SurvivorPoolViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        FirebaseClient.fetchGlobalSettings()
         if let userID = Defaults.all().string(forKey: Defaults.userIDKey) {
             FirebaseClient.fetchUser(id: userID) { (user) in
                 self.appDelegate.currentUser = user

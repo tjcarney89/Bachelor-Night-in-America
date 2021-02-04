@@ -15,6 +15,7 @@ class Defaults {
     static let userIDKey = "userID"
     static let currentPickKey = "currentPick"
     static let isAdminKey = "isAdmin"
+    static let canPickKey = "canPick"
 
     public class func add(value: Any, for key: String) {
         UserDefaults.standard.set(value, forKey: key)

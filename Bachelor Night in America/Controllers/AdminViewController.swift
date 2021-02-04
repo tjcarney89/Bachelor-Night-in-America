@@ -143,6 +143,20 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(alert, animated: true, completion: nil)
     }
     
+    func lockPicks() {
+        self.startLoading(message: "Locking Picks...")
+        FirebaseClient.updatePickAbility(canPick: "false")
+        Defaults.all().setValue(false, forKey: Defaults.canPickKey)
+        self.stopLoading(message: "Picks Locked")
+    }
+    
+    func unlockPicks() {
+        self.startLoading(message: "Unlocking Picks...")
+        FirebaseClient.updatePickAbility(canPick: "true")
+        Defaults.all().setValue(true, forKey: Defaults.canPickKey)
+        self.stopLoading(message: "Picks Unlocked")
+    }
+    
     func startLoading(message: String) {
         self.userTableView.isUserInteractionEnabled = false
         self.loadingMessageLabel.text = message
@@ -185,9 +199,20 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.fetchUsers()
             }
         }
+        let lockPicks = UIAlertAction(title: "Lock Picks", style: .default) { (action) in
+            self.lockPicks()
+        }
+        let unlockPicks = UIAlertAction(title: "Unlock Picks", style: .default) { (action) in
+            self.unlockPicks()
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         actionSheet.addAction(resetAction)
         actionSheet.addAction(eliminateAction)
+        if Defaults.all().bool(forKey: Defaults.canPickKey) == false {
+            actionSheet.addAction(unlockPicks)
+        } else {
+            actionSheet.addAction(lockPicks)
+        }
         actionSheet.addAction(cancelAction)
         self.present(actionSheet, animated: true, completion: nil)
         

@@ -10,7 +10,6 @@ import Foundation
 import FirebaseAuth
 
 class Picks {
-    //TODO: Make CurrentUser accessible through entire app
     
     static let store = Picks()
     

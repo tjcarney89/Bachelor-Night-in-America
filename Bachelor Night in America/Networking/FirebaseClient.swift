@@ -154,5 +154,23 @@ class FirebaseClient {
         ref.child("users").child(user.id).child("status").setValue(status)
     }
     
+    class func fetchGlobalSettings() {
+        ref.child("settings").child("pick_settings").observeSingleEvent(of: .value) { (snapshot) in
+            if let data = snapshot.value as? [String:Any] {
+                let canPickString = data["can_pick"] as? String ?? ""
+                let canPick = canPickString.boolValue
+                Defaults.add(value: canPick, for: Defaults.canPickKey)
+            }
+        }
+    }
+    
+    class func updatePickAbility(canPick: String) {
+        ref.child("settings").child("pick_settings").child("can_pick").setValue(canPick)
+    }
     
 }
+
+extension String {
+var boolValue: Bool {
+    return (self as NSString).boolValue
+}}
