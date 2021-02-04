@@ -107,7 +107,9 @@ class AdminViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     break
                 }
                 for contestant in self.contestants {
-                    if user.currentPick == contestant.id {
+                    if user.currentPick == nil {
+                        FirebaseClient.updateSurvivorStatus(user: user, status: "Eliminated")
+                    } else if user.currentPick == contestant.id {
                         if contestant.status == .offShow {
                             FirebaseClient.updateSurvivorStatus(user: user, status: "Eliminated")
                             break
